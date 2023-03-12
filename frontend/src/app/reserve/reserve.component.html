@@ -3,11 +3,11 @@
     <div class="float-parent-element">
         <div class="container float-child-element">
             <div>
-                <h3>Your booking</h3>
-                Floor: {{floor}} <br>
-                Address: {{adrress}} <br>
-                City: {{city}} <br>
-                Date: {{date}} <br>
+                <h3>{{'Your booking' | translate}}</h3>
+                {{'Floor' | translate}}: {{floor}} <br>
+                {{'Address' | translate}}: {{adrress}} <br>
+                {{'City' | translate}}: {{city}} <br>
+                {{'Date' | translate}}: {{date}} <br>
             </div>
             <br>
             <!--<div class="from-group">
@@ -18,13 +18,13 @@
         </label>
     </div>-->
             <div class="from-group">
-                <label>Seat:</label>
+                <label>{{'Seat' | translate}}:</label>
                 <div class="floors-container d-flex flex-wrap">
                     <div *ngFor="let seat of seats; let i = index" class="floor-box"
                         (click)="onSelectSeat(seat.seatNumber)">
                         <input type="radio" [value]="seat.seatNumber" [(ngModel)]="selectedSeat"
                             id="seat-{{seat.seatNumber}}">
-                        <label for="seat-{{seat.seatNumber}}">Seat {{seat.seatNumber}}</label>
+                        <label for="seat-{{seat.seatNumber}}">{{'Seat' | translate}} {{seat.seatNumber}}</label>
                         <div class="w-100" *ngIf="(i + 1) % 4 === 0"></div>
                     </div>
                 </div>
@@ -34,14 +34,14 @@
                 <!--<a href=''><button type="button" class="btn btn-success" (click)="crearReserva()">Create</button></a>-->
                 <a [href]="Selected ? '' : null">
                     <button *ngIf="selectedSeat" type="button" class="btn btn-success" [disabled]="!selectedSeat"
-                        (click)="validateAndSave()">Select</button> </a>
+                        (click)="validateAndSave()">{{'Select' | translate}}</button> </a>
                 <a routerLink=".."><button type="button" class="btn btn-success"
-                        style="margin-left: 10px;">Cancel</button></a>
+                        style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
             </div>
         </div>
 
         <div class="float-child-element">
-            <h5>You can see our floor plan here</h5>
+            <h5>{{'You can see our floor plan here' | translate}}</h5>
             <div class="yellow">
                 <img src="/assets/img/plano.png" width="400" height="400">
             </div>

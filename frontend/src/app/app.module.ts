@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { getCurrentLang } from './app.component';  // importa la función
+
 
 import { AppComponent } from './app.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
@@ -55,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'en-US',
+      defaultLanguage: getCurrentLang(),   // para mantener el idioma
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,

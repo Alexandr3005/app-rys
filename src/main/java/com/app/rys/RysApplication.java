@@ -58,7 +58,7 @@ public class RysApplication {
 		Floor floor6 = new Floor();
 		Floor floor7 = new Floor();
 		Floor floor8 = new Floor();
-		Floor floor9 = new Floor(); //cambio prueba
+		Floor floor9 = new Floor(); 
 		
 		// 16 asientos num 1 y 2 de cada planta
 		// seat sin darle estado por haber hecho prePersist

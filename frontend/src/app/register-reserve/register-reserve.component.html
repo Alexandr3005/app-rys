@@ -1,14 +1,14 @@
 <div class="col-md-6 offset-md-3">
-    <h3 class="text-center">Create new reservation</h3>
+    <h3 class="text-center">{{'Create new reservation' | translate}}</h3>
     
     
         <div class="from-group">
-            <label>Date: <input type="date" class="from-control" id="fecha" [(ngModel)]="todayDate" [value]="todayDate"
+            <label>{{'Date' | translate}}: <input type="date" class="from-control" id="fecha" [(ngModel)]="todayDate" [value]="todayDate"
                     name="fecha">
             </label>
         </div><br>
         <div class="from-group">
-            <label>City:
+            <label>{{'City' | translate}}:
                 <select name="miselect" [(ngModel)]="ciudad" (change)="obtenerEdificios()">
                     <option [selected]="selectedCity===ciudad" *ngFor="let selectedCity of ciudades"
                         [ngValue]="selectedCity">{{selectedCity}}</option>
@@ -24,7 +24,7 @@
 
 
         <div class="from-group">
-            <label>Building: <select name="edificio" [(ngModel)]="adrress" (change)="obtenerPlantas()">
+            <label>{{'Building' | translate}}: <select name="edificio" [(ngModel)]="adrress" (change)="obtenerPlantas()">
                     <option [selected]="building.adrress===adrress" *ngFor="let building of buildings"
                         [value]="building.adrress">{{building.adrress}}</option>
                 </select>
@@ -32,19 +32,19 @@
         </div><br>
         <!--Para cajas he quitado el form-->
         <div class="from-group">
-            <label>Floor:</label>
+            <label>{{'Floor' | translate}}:</label>
             <div class="floors-container">
                 <div *ngFor="let floor of floors" class="floor-box" (click)="onSelectFloor(floor.floorNumber)">
                     <input type="radio" [value]="floor.floorNumber" [(ngModel)]="selectedFloor" id="floor-{{floor.floorNumber}}">
-                    <label for="floor-{{floor.floorNumber}}">Floor {{floor.floorNumber}} ({{floor.ocupancy}}%)</label>
+                    <label for="floor-{{floor.floorNumber}}">{{'Floor' | translate}} {{floor.floorNumber}} ({{floor.ocupancy}}%)</label>
                 </div>
             </div>
         </div>
     <br><br>
     <div class="container">
         <a [routerLink]="isSelected ? 'reserve' : null">
-            <button *ngIf="selectedFloor || true" type="button" class="btn btn-success" [disabled]="!selectedFloor" [ngClass]="{'disabled-button': !selectedFloor}" (click)="isSelected = selectedFloor; obtenerSillas()">Select</button>
+            <button *ngIf="selectedFloor || true" type="button" class="btn btn-success" [disabled]="!selectedFloor" [ngClass]="{'disabled-button': !selectedFloor}" (click)="isSelected = selectedFloor; obtenerSillas()">{{'Select' | translate}}</button>
           </a>
-        <a href=""><button type="button" class="btn btn-success" style="margin-left: 10px;">Cancel</button></a>
+        <a href=""><button type="button" class="btn btn-success" style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
     </div>
 </div>

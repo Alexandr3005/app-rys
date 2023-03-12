@@ -9,5 +9,24 @@
     "Login": "Iniciar sesión",
     "Logout": "Cerrar sesión",
     "Profile settings": "Configuración de perfil",
-    "Back to Home": "Volver a Home"
+    "Back to Home": "Volver a Home",
+    
+    "My reservations": "Mis reservas",
+    "You have 0 confirmed reservations this month": "Tienes 0 reservas confirmadas",
+    "New reservation": "Nueva reserva",
+    "You are about to delete a reservation":"Esta apunto de borrar una reserva",
+    "Do you want to continue?":"¿Quieres continuar?",
+    "Seat":"Asiento",
+    "Floor":"Planta",
+    "Building":"Edificio",
+    "City":"Ciudad",
+
+    "Date":"Fecha",
+    "Create new reservation":"Crear una nueva reserva",
+    "Select":"Seleccionar",
+    "Cancel":"Cancelar",
+
+    "Your booking": "Tu reserva",
+    "Address":"Direccion",
+    "You can see our floor plan here":"Puedes ver nuestro plano de planta aqui"
   }

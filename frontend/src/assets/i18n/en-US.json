@@ -9,5 +9,24 @@
     "Login": "Login",
     "Logout": "Logout",
     "Profile settings": "Profile settings",
-    "Back to Home": "Back to Home"
+    "Back to Home": "Back to Home",
+
+    "My reservations": "My reservations",
+    "You have 0 confirmed reservations this month": "You have 0 confirmed reservations this month",
+    "New reservation": "New reservations",
+    "You are about to delete a reservation":"You are about to delete a reservation",
+    "Do you want to continue?":"Do you want to continue?",
+    "Seat":"Seat",
+    "Floor":"Floor",
+    "Building":"Building",
+    "City":"City",
+    "Create new reservation":"Create new reservation",
+    "Date":"Date",
+    "Select":"Select",
+    "Cancel":"Cancel",
+
+    "Your booking": "Your booking",
+    "Address":"Address",
+    "You can see our floor plan here":"You can see our floor plan here"
+
   }

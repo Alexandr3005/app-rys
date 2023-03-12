@@ -12,8 +12,8 @@
 <div class="float-parent-element">
     <div class="float-child-element">
         <div class="red">
-            <h6>You have 0 confirmed reservations this month</h6>
-            <a routerLink="/newReservation"><button type="button" class="btn btn-primary">New reservation</button></a>
+            <h6>{{'You have 0 confirmed reservations this month' | translate}}</h6>
+            <a routerLink="/newReservation"><button type="button" class="btn btn-primary">{{'New reservation' | translate}}</button></a>
         </div>
     </div>
     <div class="float-child-element">
@@ -25,7 +25,7 @@
 <br>
 
 <div class="row container" style="display: inline-block;">
-    <h3> My reservations-------------------------------------------------------------------------------
+    <h3> {{'My reservations' | translate}}-------------------------------------------------------------------------------
     </h3>
 </div>
 
@@ -66,8 +66,8 @@
             <div class="modal-dialog">
                 <div class="modal-content ">
                     <div class="modal-body">
-                        <h1 class="modal-title fs-5"> You are about to delete a reservation</h1>
-                            <h5>Do you want to continue?</h5>
+                        <h1 class="modal-title fs-5"> {{'You are about to delete a reservation' | translate}}</h1>
+                            <h5>{{'Do you want to continue?' | translate}}</h5>
                         <br>
                         <a (click)="deleteReservation(booking.id)" data-bs-toggle="modal" data-bs-target="#modal2">
                             <button onclick="location.reload()" class="btn btn-primary"> Accept </button>
@@ -88,12 +88,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Seat: {{booking.informacionDeReserva.split('/')[0]}} <br>
-                        Floor: {{booking.informacionDeReserva.split('/')[1].substr(0,2)}} <br>
-                        Building: {{booking.informacionDeReserva.split(',')[0].split(' ')[1]+'
+                        {{'Seat' | translate}}: {{booking.informacionDeReserva.split('/')[0]}} <br>
+                        {{'Floor' | translate}}: {{booking.informacionDeReserva.split('/')[1].substr(0,2)}} <br>
+                        {{'Building'| translate}}: {{booking.informacionDeReserva.split(',')[0].split(' ')[1]+'
                         '+booking.informacionDeReserva.split(',')[0].split(' ')[2]+'
                         '+booking.informacionDeReserva.split(',')[0].split(' ')[3]}} <br>
-                        City: {{booking.informacionDeReserva.split(',')[1]}} <br>
+                        {{'City' | translate}}: {{booking.informacionDeReserva.split(',')[1]}} <br>
                     </div>
                 </div>
             </div>

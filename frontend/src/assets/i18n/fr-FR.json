@@ -8,6 +8,26 @@
     "My profile": "Mon profil",
     "Login": "Commencer la session",
     "Logout": "Fermer la session",
-    "Profile settings": "paramètres de profil",
-    "Back to Home": "Retourner à Home"
+    "Profile settings": "Paramètres de profil",
+    "Back to Home": "Retourner à Home",
+
+    "My reservations": "Mes réservations",
+    "You have 0 confirmed reservations this month":"Vous avez 0 réservations confirmées ce mois-ci",
+    "New reservation": "Nouvelle réservation",
+    "You are about to delete a reservation":"Vous êtes sur le point de supprimer une réservation",
+    "Do you want to continue?":"Voulez-vous continuer?",
+    "Seat":"Siège",
+    "Floor":"Plante",
+    "Building":"Bâtiment",
+    "City":"Ville",
+
+    "Create new reservation":"Créer une nouvelle réservation",
+    "Date":"Date",
+    "Select":"Sélectionner",
+    "Cancel":"Annuler",
+
+    "Your booking": "Votre réservation",
+    "Address":"Adresse",
+    "You can see our floor plan here":"Vous pouvez voir notre plan d'étage ici"
+
   }
