@@ -37,10 +37,17 @@ public class RysApplication {
 		// 1 usuario
 		User user = new User();
 		user.setFullName("admin");
-		user.setEmail("user.admin@gmail.com");
+		user.setEmail("admin.admin@gmail.com");
 		user.setPhone("985858565");
 		user.setPassword("admin");
 		user.setUserCode("U-1");
+		
+		User user2 = new User();
+		user2.setFullName("user");
+		user2.setEmail("user.admin@gmail.com");
+		user2.setPhone("985858565");
+		user2.setPassword("user");
+		user2.setUserCode("U-2");
 		
 		// edificio 1 y 2 de Nadrid con 4 plantas (1->2) y (3->4)
 		// edificio 3 y 4 de Barcelona con 2 plantas (5->6) y (7->8)
@@ -369,6 +376,7 @@ public class RysApplication {
 		building4.setFloors(Arrays.asList(floor7,floor8));
 		
 		userRepository.save(user);
+		userRepository.save(user2);
 		buildingRepository.save(building1);
 		buildingRepository.save(building2);
 		buildingRepository.save(building3);

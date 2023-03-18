@@ -7,5 +7,12 @@ import com.app.rys.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
+
+	//User findByid(Long id);
+
 	
+
+	User findByEmail(String email);
+
+
 }

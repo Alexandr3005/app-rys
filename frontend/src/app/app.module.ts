@@ -20,17 +20,19 @@ import { LanguagesComponent } from './languages/languages.component';
 import { RegisterReserveComponent } from './register-reserve/register-reserve.component';
 import { ReserveComponent } from './reserve/reserve.component';
 import { SharedService } from './service/shared.service';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 const appRoutes:Routes=[
-  // Home lo mismo que My reservations, usaré Home como lista getRservas
-  {path:'', component:HomeComponentComponent}, 
+  {path:'', redirectTo: 'login', pathMatch: 'full'},
+  {path:'home', component:HomeComponentComponent},
   {path:'profile', component:ProfileComponentComponent},
   {path:'setting', component:SettingComponentComponent},
   {path:'login', component:LoginComponent},
   {path:'logout', component:LogoutComponent},
   {path:'languages', component:LanguagesComponent},
   {path:'newReservation', component:RegisterReserveComponent},
-  {path:'newReservation/reserve', component:ReserveComponent}
+  {path:'newReservation/reserve', component:ReserveComponent},
+  {path:'register-user', component:RegisterUserComponent}
 
 ];
 
@@ -48,7 +50,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LogoutComponent,
     LanguagesComponent,
     RegisterReserveComponent,
-    ReserveComponent
+    ReserveComponent,
+    RegisterUserComponent
     ],
   imports: [
     BrowserModule,
