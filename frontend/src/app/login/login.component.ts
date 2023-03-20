@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../service/login.service';
+//import { LoginService } from '../service/login.service';
 import { User } from '../user';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,36 +14,34 @@ export class LoginComponent implements OnInit {
   //Objeto user 
   user:User = new User();
 
-  constructor(private loginservice:LoginService, private router: Router) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
- 
-/*
-  volverHome() {
+  login() {
+    this.authService.login(this.user).subscribe(
+      (response: any) => {
+        this.authService.currentUser = response;
+        this.router.navigate(['/home']);
+      },
 
-    this.router.navigate(['']);
-
-  }
-  */
-
-  login(){
-    console.log(this.user);
-    this.loginservice.login(this.user).subscribe(data=>{
-      this.router.navigate(['/home']);
-   
-    }, error=>alert("Enter the correct name and password"));
-  }
-
-  
-
-  onSubmit() {
-    // Aquí se procesa la lógica de inicio de sesión
-    // ...
-
-    // Después de procesar el inicio de sesión, redirigir a la página de home
-    this.router.navigate(['/']);
+      (error) => {
+        console.error(error);
+        alert('Enter the correct name and password');
+      }
+    );
   }
   
+  //Salir del usuario 
+  logout(){
+  this.authService.logout();
+  } 
+
+    
 }
+
+
+
+  
+  

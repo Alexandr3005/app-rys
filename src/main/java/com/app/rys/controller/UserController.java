@@ -22,7 +22,7 @@ public class UserController {
 	private UserRepository repository;
 	
 	@PostMapping("/login/")
-	public ResponseEntity<?> loginUser(@RequestBody User userData){
+	public ResponseEntity<User> loginUser(@RequestBody User userData){
 		//User user = repository.findByid(userData.getId());
 		User user = repository.findByEmail(userData.getEmail());
 		

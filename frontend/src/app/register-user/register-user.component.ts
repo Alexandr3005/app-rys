@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterService } from '../service/register.service';
 import { User } from '../user';
 
@@ -11,19 +12,25 @@ export class RegisterUserComponent implements OnInit {
 
   //Objeto user 
   user:User = new User();
+ 
 
-  constructor(private registerService: RegisterService) { }
+  //Router redirigir
 
-  
+  constructor(private registerService: RegisterService, private router:Router) { }
+
 
   ngOnInit(): void {
+    
   }
 
   userRegister(){
     this.registerService.registerUser(this.user).subscribe(data=>{
-      alert("Succesfuclly registered")
+      this.router.navigate(['/home']);
+      
     }, error=>alert("Sorry not register"))
   
   }
+
+
 
 }

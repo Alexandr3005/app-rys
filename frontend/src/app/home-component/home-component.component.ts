@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../service/booking';
 import { BookingService } from '../service/booking.service';
+import { AuthService } from '../service/auth.service';
+
 
 
 
@@ -23,10 +25,14 @@ export class HomeComponentComponent implements OnInit {
   currentYear = this.currentDay.getFullYear();
   monthAndYear = new Map();
 
-  constructor(private bookingService: BookingService) { }
+  currentUser :any;
+
+  constructor(private bookingService: BookingService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.obtenerReservas();
+   this.currentUser= this.authService.currentUser;
+    console.log(this.currentUser);
   }
 
   //olek
