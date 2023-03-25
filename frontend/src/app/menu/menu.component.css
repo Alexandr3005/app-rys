@@ -1,0 +1,45 @@
+.home{
+    padding-left: 20px;
+  }
+  
+  .dropdown [class="nav-link dropdown-toggle"] {
+   color: white;   
+  }
+  
+  [class="form-select form-select"]{
+    border-style: none;
+  }
+  
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .language-picker-area {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .picker-label {
+    margin-right: 20px;
+  }
+  
+  .language-picker {
+    width: 80px;
+    height: 32px;
+    font-size: small;
+    border-style: none;
+  }
+  
+  .dropdown [class="nav-link dropdown-toggle"] {
+    color: white;   
+  }
+  
+  [class = "nav-item dropdown"]{
+     padding-right: 20px;
+  }
+  

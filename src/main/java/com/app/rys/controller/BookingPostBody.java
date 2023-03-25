@@ -1,5 +1,6 @@
 package com.app.rys.controller;
 
+import com.app.rys.models.Booking;
 import com.app.rys.models.User;
 
 public class BookingPostBody {
@@ -9,7 +10,7 @@ public class BookingPostBody {
 	private String floorNumber;
 	private String city;
 	private String reservationDate;
-	private User user;
+	private Long id;
 
 	public BookingPostBody(String seatNumber, String address, String floorNumber, String city, String reservationDate, User user) {
 		super();
@@ -18,6 +19,7 @@ public class BookingPostBody {
 		this.floorNumber = floorNumber;
 		this.city = city;
 		this.reservationDate = reservationDate;
+		this.id = user.getId();
 	}
 
 	public BookingPostBody() {
@@ -63,6 +65,18 @@ public class BookingPostBody {
 	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
+
+	
+	public Long getId() {
+	    return id;
+	}
+
+	
+	// ENLAZAR CON USUARIO
+	
+	
+	
+	
 	
 	
 	

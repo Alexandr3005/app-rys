@@ -18,7 +18,7 @@ public interface IBookingService {
 	 * 
 	 * @return
 	 */
-	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate);
+	public Booking createReservation(Long id, String seatNumber, String adrress, String floorNumber, String city, Date reservationDate);
 	
 	/**
 	 * Método para eliminar una reserva

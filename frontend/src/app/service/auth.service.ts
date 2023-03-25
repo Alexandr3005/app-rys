@@ -37,6 +37,20 @@ export class AuthService {
     );
   }
 
+  register(user: User): Observable<object> {
+    console.log(user);
+    return this.httpClient.post(`${this.baseURL}register/`, user).pipe(
+      map((response: any) => {
+        this.currentUser = response; 
+        console.log(response);
+
+        localStorage.setItem(this.currentUserKey, JSON.stringify(this.currentUser));
+     
+        return response;
+      })
+    );
+  }
+
   logout() {
     // Remover el usuario actual de localStorage o sessionStorage
     localStorage.removeItem(this.currentUserKey);

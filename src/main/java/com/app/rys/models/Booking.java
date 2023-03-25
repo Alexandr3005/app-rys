@@ -100,13 +100,15 @@ public class Booking {
 		this.informacionDeReserva = informacionDeReserva;
 	}
 
-	public User getUser() {
-		return user;
+	public Long getUser() {
+		return user.getId();
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 
 	// equals & hashcode
 	@Override
@@ -131,7 +133,7 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [id=" + id + ", bookingCode=" + bookingCode + ", ReservationDate=" + reservationDate
-				+ ", bookingState=" + bookingState + "]";
+				+ ", bookingState=" + bookingState +  "]";
 	}
 
 }

@@ -26,6 +26,7 @@ export class HomeComponentComponent implements OnInit {
   monthAndYear = new Map();
 
   currentUser :any;
+  router: any;
 
   constructor(private bookingService: BookingService, public authService: AuthService) { }
 
@@ -77,6 +78,8 @@ export class HomeComponentComponent implements OnInit {
       });
     });
   }
+
+
 
   // objetivo : para poner clas reserva de bajo de su fecha(mes y año) correspondiente en el template
   // lo que hace: compara el mes y el año que estan en el mapa con el mes y el año de cada resrva

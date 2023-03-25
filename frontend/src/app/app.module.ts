@@ -21,6 +21,7 @@ import { RegisterReserveComponent } from './register-reserve/register-reserve.co
 import { ReserveComponent } from './reserve/reserve.component';
 import { SharedService } from './service/shared.service';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { MenuComponent } from './menu/menu.component';
 
 const appRoutes:Routes=[
   {path:'', redirectTo: 'login', pathMatch: 'full'},
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LanguagesComponent,
     RegisterReserveComponent,
     ReserveComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    MenuComponent
     ],
   imports: [
     BrowserModule,

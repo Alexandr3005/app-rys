@@ -72,8 +72,9 @@ public class AppController {
 		if (!bookingService.checkDateAvailability(reservationDate, informacionDeReserva)) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		/*bookingPostBody.getUser().getId()*/
 
-		Booking booking = bookingService.createReservation(bookingPostBody.getSeatNumber(),
+		Booking booking = bookingService.createReservation(bookingPostBody.getId(), bookingPostBody.getSeatNumber(),
 				bookingPostBody.getAddress(), bookingPostBody.getFloorNumber(), bookingPostBody.getCity().toUpperCase(),
 				reservationDate);
 		if (booking != null) {

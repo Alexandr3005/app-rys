@@ -49,7 +49,7 @@ public class BookingService implements IBookingService {
 	 * 
 	 */
 	@Override
-	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city,
+	public Booking createReservation(Long id, String seatNumber, String adrress, String floorNumber, String city,
 			Date reservationDate) {
 		try {
 			Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
