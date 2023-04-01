@@ -49,15 +49,14 @@ public class BookingService implements IBookingService {
 	 * 
 	 */
 	@Override
-	public Booking createReservation(Long id, String seatNumber, String adrress, String floorNumber, String city,
-			Date reservationDate) {
+	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city,
+			Date reservationDate, Long userId) {
 		try {
 			Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
 			Optional<Floor> oFloor = building.getFloors().stream()
 					.filter(floor -> floor.getFloorNumber().equals(floorNumber)).findFirst();
 
 			if (oFloor.isPresent()) {
-				// puedes hacer try/catch
 				Floor floor = oFloor.orElseThrow();
 				Optional<Seat> oSeat = floor.getSeats().stream().filter(seat -> seat.getSeatNumber().equals(seatNumber))
 						.findFirst();
@@ -68,15 +67,29 @@ public class BookingService implements IBookingService {
 					Long reservationCounter = bookingRepository.count();
 					Booking booking = new Booking(UtilityRYS.generateBookingCode(reservationCounter), reservationDate,
 							BookingState.PENDIENTE.getState());
-					// Floor floor = existedSeat.getFloor();
-					// Building building = floor.getBuilding();
+					
 					booking.setInformacionDeReserva(
 							new StringBuilder(existedSeat.getSeatNumber() + "/" + floor.getFloorNumber() + " "
 									+ building.getAdrress() + ", " + building.getCity()).toString());
 					existedSeat.setState(SeatState.NO_DISPONIBLE.getState());
-					List<User> users = userRepository.findAll();
+					
+					/*
+					List<User > users = userRepository.findAll();
 					User user = users.get(0);
+					*/
+				//					User user = userRepository.findById((long) 2).orElse(null);
+
+					
+					// falta coger bien el id
+					
+					
+					User user = userRepository.findById((long) 2).orElse(null);
+					if (user == null) {
+					    throw new Exception("User not found");
+					}
+				
 					booking.setUser(user);
+					
 					try {
 						userRepository.save(user);
 						bookingRepository.save(booking);
@@ -88,11 +101,13 @@ public class BookingService implements IBookingService {
 
 				}
 			}
+			
 		} catch (Exception e) {
 			System.out.println("Seat not available");
 		}
 		return null;
 	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -147,5 +162,15 @@ public class BookingService implements IBookingService {
 	public List<Booking> getReservation() {
 		return bookingRepository.findAll();
 	}
+	
+	
+	
+	/*
+	User user = userRepository.findById(userId).orElse(null);
+	if (user == null) {
+		throw new Exception("User not found");
+	}
+	
+	*/
 
 }

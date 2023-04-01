@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,7 +62,7 @@ public class AppController {
 	 */
 	// que dependa de la fecha
 	@PostMapping("/reserve/")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200") //sacarUsuario
 	public ResponseEntity<Booking> createReservation(@RequestBody BookingPostBody bookingPostBody)
 			throws ParseException {
 		Date reservationDate = DateUtility.convertStringToDate(bookingPostBody.getReservationDate());
@@ -68,15 +70,15 @@ public class AppController {
 				bookingPostBody.getSeatNumber() + "/" + bookingPostBody.getFloorNumber() + " "
 						+ bookingPostBody.getAddress() + ", " + bookingPostBody.getCity().toUpperCase())
 				.toString();
+		// algo asi usuarios String prueba = bookingPostBody.getAddress();
 
 		if (!bookingService.checkDateAvailability(reservationDate, informacionDeReserva)) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		/*bookingPostBody.getUser().getId()*/
 
-		Booking booking = bookingService.createReservation(bookingPostBody.getId(), bookingPostBody.getSeatNumber(),
+		Booking booking = bookingService.createReservation(bookingPostBody.getSeatNumber(),
 				bookingPostBody.getAddress(), bookingPostBody.getFloorNumber(), bookingPostBody.getCity().toUpperCase(),
-				reservationDate);
+				reservationDate, bookingPostBody.userId());
 		if (booking != null) {
 			return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
 		} else {

@@ -108,8 +108,11 @@ public class Booking {
 		this.user = user;
 	}
 	
+	public Long getUserId() {
+	    return user.getId();
+	}
 	
-
+	
 	// equals & hashcode
 	@Override
 	public int hashCode() {

@@ -50,7 +50,7 @@ export class ReserveComponent implements OnInit {
       console.log(data);
     });
   }
-
+///MIRAR ESTO
   validateAndSave(){
     if(this.selectedSeat){
       this.Selected = true;

@@ -5,22 +5,25 @@ import com.app.rys.models.User;
 
 public class BookingPostBody {
 	
-	private String seatNumber;
-	private String address;
-	private String floorNumber;
-	private String city;
-	private String reservationDate;
-	private Long id;
 
-	public BookingPostBody(String seatNumber, String address, String floorNumber, String city, String reservationDate, User user) {
-		super();
-		this.seatNumber = seatNumber;
-		this.address = address;
-		this.floorNumber = floorNumber;
-		this.city = city;
-		this.reservationDate = reservationDate;
-		this.id = user.getId();
-	}
+	    
+	    private String seatNumber;
+	    private String address;
+	    private String floorNumber;
+	    private String city;
+	    private String reservationDate;
+	    private Long userId;
+
+	    public BookingPostBody(String seatNumber, String address, String floorNumber, String city, String reservationDate, Long userId, User user) {
+	        super();
+	        this.seatNumber = seatNumber;
+	        this.address = address;
+	        this.floorNumber = floorNumber;
+	        this.city = city;
+	        this.reservationDate = reservationDate;
+	        this.userId = user.getId() ;
+	    }
+	
 
 	public BookingPostBody() {
 		super();
@@ -65,14 +68,25 @@ public class BookingPostBody {
 	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
-
 	
-	public Long getId() {
-	    return id;
+	public Long userId() {
+		return userId;
 	}
 
+	public void setUser(Long userId) {
+		this.userId = userId;
+	}
 	
-	// ENLAZAR CON USUARIO
+	
+
+	
+	
+
+	
+	
+
+	
+	
 	
 	
 	

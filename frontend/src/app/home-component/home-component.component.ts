@@ -3,8 +3,7 @@ import { Booking } from '../service/booking';
 import { BookingService } from '../service/booking.service';
 import { AuthService } from '../service/auth.service';
 
-
-
+import { User2 } from '../user';
 
 @Component({
   selector: 'app-home-component',
@@ -20,6 +19,10 @@ export class HomeComponentComponent implements OnInit {
   selectedReservationId : number;
   /*Alert olek*/
   bookings: Booking[];
+  users: User2[];
+
+
+  
   currentDay = new Date();
   currentMonth = this.currentDay.getUTCMonth() + 1;
   currentYear = this.currentDay.getFullYear();
@@ -34,7 +37,11 @@ export class HomeComponentComponent implements OnInit {
     this.obtenerReservas();
    this.currentUser= this.authService.currentUser;
     console.log(this.currentUser);
+    this.currentUser = this.authService.currentUser;
+    
   }
+
+  
 
   //olek
   onDeleteReservation(id: number) {

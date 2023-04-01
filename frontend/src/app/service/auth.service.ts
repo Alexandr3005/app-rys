@@ -11,6 +11,8 @@ import { User } from '../user';
 })
 export class AuthService {
   currentUser: any;
+  userId: number; // Agregar nueva propiedad
+
   private baseURL = "http://localhost:8080/api/reservation/";
   private currentUserKey = 'currentUser';
 
@@ -20,6 +22,7 @@ export class AuthService {
      const currentUser = localStorage.getItem(this.currentUserKey);
      if (currentUser) {
        this.currentUser = JSON.parse(currentUser);
+       this.userId = this.currentUser.id;
      }
     }
 

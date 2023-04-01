@@ -49,7 +49,7 @@ public class RysApplication {
 		user2.setPassword("user");
 		user2.setUserCode("U-2");
 		
-		// edificio 1 y 2 de Nadrid con 4 plantas (1->2) y (3->4)
+		// edificio 1 y 2 de Madrid con 4 plantas (1->2) y (3->4)
 		// edificio 3 y 4 de Barcelona con 2 plantas (5->6) y (7->8)
 		Building building1 = new Building();
 		Building building2 = new Building();
