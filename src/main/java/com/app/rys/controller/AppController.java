@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -63,8 +64,8 @@ public class AppController {
 	// que dependa de la fecha
 	@PostMapping("/reserve/")
 	@CrossOrigin(origins = "http://localhost:4200") //sacarUsuario
-	public ResponseEntity<Booking> createReservation(@RequestBody BookingPostBody bookingPostBody)
-			throws ParseException {
+	public ResponseEntity<Booking> createReservation(@RequestBody BookingPostBody bookingPostBody, HttpServletRequest request)
+	        throws ParseException {
 		Date reservationDate = DateUtility.convertStringToDate(bookingPostBody.getReservationDate());
 		String informacionDeReserva = new StringBuilder(
 				bookingPostBody.getSeatNumber() + "/" + bookingPostBody.getFloorNumber() + " "
@@ -78,7 +79,7 @@ public class AppController {
 
 		Booking booking = bookingService.createReservation(bookingPostBody.getSeatNumber(),
 				bookingPostBody.getAddress(), bookingPostBody.getFloorNumber(), bookingPostBody.getCity().toUpperCase(),
-				reservationDate, bookingPostBody.userId());
+				reservationDate, request);
 		if (booking != null) {
 			return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
 		} else {
@@ -104,13 +105,7 @@ public class AppController {
 	@GetMapping("/builds/{city}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Building>> getBuilds(@PathVariable(value = "city") String city) {
-		/*
-		 * return new
-		 * ResponseEntity<List<Building>>(buildingRepository.findAll().stream()
-		 * .filter(build ->
-		 * build.getCity().toUpperCase().equals(city.toUpperCase())).collect(Collectors.
-		 * toList()), HttpStatus.OK);
-		 */
+		
 		return new ResponseEntity<List<Building>>(buildingRepository.findByCity(city.toUpperCase()), HttpStatus.OK);
 	}
 

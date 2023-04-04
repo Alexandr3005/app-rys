@@ -3,10 +3,12 @@ package com.app.rys.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.app.rys.models.Booking;
 import com.app.rys.models.User;
+import com.app.rys.repository.UserRepository;
 
 /**
  * Servicio de reservación
@@ -21,7 +23,8 @@ public interface IBookingService {
 	 * 
 	 * @return
 	 */
-	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate, Long userId);
+	Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate,
+			HttpServletRequest request);
 
 
 	/**
@@ -44,6 +47,25 @@ public interface IBookingService {
 	 * @return
 	 */
 	public boolean checkDateAvailability(Date reservationDate, String seatNumber);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 */
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 */
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 */
+	
+
 	/**
 	 * {@inheritDoc}
 	 * 

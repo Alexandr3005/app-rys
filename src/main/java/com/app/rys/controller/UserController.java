@@ -1,4 +1,8 @@
+
+/*
 package com.app.rys.controller;
+
+import javax.servlet.http.HttpSession;
 
 //registrar y logear usuario
 
@@ -21,15 +25,22 @@ public class UserController {
 	@Autowired
 	private UserRepository repository;
 	
+	private Long userId;
+	
+	
 	@PostMapping("/login/")
-	public ResponseEntity<User> loginUser(@RequestBody User userData){
-		//User user = repository.findByid(userData.getId());
-		User user = repository.findByEmail(userData.getEmail());
-		
-		if(user.getPassword().equals(userData.getPassword()))
-			return ResponseEntity.ok(user);
-		return ResponseEntity.status(500).build();
+	public ResponseEntity<User> loginUser(@RequestBody User userData, HttpSession session) {
+	    User user = repository.findByEmail(userData.getEmail());
+
+	    if (user != null && user.getPassword().equals(userData.getPassword())) {
+	        userData.setId(user.getId());
+	        session.setAttribute("userId", user.getId()); // Agregar userId a la sesión
+	        return ResponseEntity.ok(userData);
+	    } else {
+	        return ResponseEntity.status(500).build();
+	    }
 	}
+
 	
 	@PostMapping("/register/")
 	public ResponseEntity<User> registerUser(@RequestBody User user) {
@@ -37,3 +48,4 @@ public class UserController {
 	}
 	
 }
+*/

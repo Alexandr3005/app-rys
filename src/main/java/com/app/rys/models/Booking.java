@@ -100,18 +100,17 @@ public class Booking {
 		this.informacionDeReserva = informacionDeReserva;
 	}
 
-	public Long getUser() {
-		return user.getId();
+	public User getUser() {
+	    return user;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+	    this.user = user;
 	}
-	
+
 	public Long getUserId() {
-	    return user.getId();
+	    return user != null ? user.getId() : null;
 	}
-	
 	
 	// equals & hashcode
 	@Override

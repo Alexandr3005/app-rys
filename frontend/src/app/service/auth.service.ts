@@ -26,6 +26,20 @@ export class AuthService {
      }
     }
 
+    login(user: User): Observable<object> {
+      console.log(user);
+      return this.httpClient.post(`${this.baseURL}login/`, user).pipe(
+        map((response: any) => {
+          this.currentUser = response; //informacion del ususario
+          console.log(response);
+          // Guardar el usuario actual en localStorage o sessionStorage
+          localStorage.setItem(this.currentUserKey, JSON.stringify(this.currentUser));
+          // Retornar la respuesta del servidor
+          return response;
+        })
+      );
+    }
+/*
    login(user: User): Observable<object> {
     console.log(user);
     return this.httpClient.post(`${this.baseURL}login/`, user).pipe(
@@ -39,7 +53,7 @@ export class AuthService {
       })
     );
   }
-
+*/
   register(user: User): Observable<object> {
     console.log(user);
     return this.httpClient.post(`${this.baseURL}register/`, user).pipe(
