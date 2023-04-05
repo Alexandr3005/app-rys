@@ -11,31 +11,29 @@ import { getCurrentLang } from './app.component';  // importa la función
 
 
 import { AppComponent } from './app.component';
-import { HomeComponentComponent } from './home-component/home-component.component';
-import { ProfileComponentComponent } from './profile-component/profile-component.component';
-import { SettingComponentComponent } from './setting-component/setting-component.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { LanguagesComponent } from './languages/languages.component';
-import { RegisterReserveComponent } from './register-reserve/register-reserve.component';
-import { ReserveComponent } from './reserve/reserve.component';
-import { SharedService } from './service/shared.service';
-import { RegisterUserComponent } from './register-user/register-user.component';
-import { MenuComponent } from './menu/menu.component';
+import { HomeComponentComponent } from './bookings/pages/home/home-component.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { ReserveComponent } from './bookings/pages/reserve/reserve.component';
+import { SharedService } from './bookings/services/shared.service';
+import { RegisterUserComponent } from './auth/pages/register-user/register-user.component';
+import { MenuComponent } from './bookings/pages/menu/menu.component';
+import { LogoutComponent } from './auth/pages/logout/logout.component';
+import { RegisterReserveComponent } from './bookings/pages/register-reserve/register-reserve.component';
+import { SettingComponentComponent } from './auth/setting/setting-component.component';
+
 
 const appRoutes:Routes=[
   {path:'', redirectTo: 'login', pathMatch: 'full'},
   {path:'home', component:HomeComponentComponent},
-  {path:'profile', component:ProfileComponentComponent},
   {path:'setting', component:SettingComponentComponent},
   {path:'login', component:LoginComponent},
   {path:'logout', component:LogoutComponent},
-  {path:'languages', component:LanguagesComponent},
   {path:'newReservation', component:RegisterReserveComponent},
   {path:'newReservation/reserve', component:ReserveComponent},
   {path:'register-user', component:RegisterUserComponent}
 
 ];
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -45,11 +43,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponentComponent,
-    ProfileComponentComponent,
     SettingComponentComponent,
     LoginComponent,
     LogoutComponent,
-    LanguagesComponent,
     RegisterReserveComponent,
     ReserveComponent,
     RegisterUserComponent,
