@@ -1,48 +1,51 @@
-
 <app-menu></app-menu>
-<div class="col-md-6 offset-md-3">
-    <h3 class="text-center">{{'Create new reservation' | translate}}</h3>
-    
-    
-        <div class="from-group">
-            <label>{{'Date' | translate}}: <input type="date" class="from-control" id="fecha" [(ngModel)]="todayDate" [value]="todayDate"
-                    name="fecha">
-            </label>
-        </div><br>
-        <div class="from-group">
-            <label>{{'City' | translate}}:
-                <select name="miselect" [(ngModel)]="ciudad" (change)="obtenerEdificios()">
-                    <option [selected]="selectedCity===ciudad" *ngFor="let selectedCity of ciudades"
-                        [ngValue]="selectedCity">{{selectedCity}}</option>
+<div class="container justify-content-center">
+    <div class="d-flex align-items-center flex-column">
+        <div class="col-4">
+            <h3 class="text-center">{{'Create new reservation' | translate}}</h3>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label>{{'Date' | translate}}:</label>
+                <input type="date" class="form-control" id="fecha" [(ngModel)]="todayDate" [value]="todayDate" name="fecha" min="{{todayDate | date:'yyyy-MM-dd'}}">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label>{{'City' | translate}}:</label>
+                <select name="miselect" [(ngModel)]="ciudad" (change)="obtenerEdificios()" class="form-control">
+                    <option [selected]="selectedCity===ciudad" *ngFor="let selectedCity of ciudades" [ngValue]="selectedCity">{{selectedCity}}</option>
                 </select>
-
-             
-            </label>
-        </div><br>
-
-
-        <div class="from-group">
-            <label>{{'Building' | translate}}: <select name="edificio" [(ngModel)]="adrress" (change)="obtenerPlantas()">
-                    <option [selected]="building.adrress===adrress" *ngFor="let building of buildings"
-                        [value]="building.adrress">{{building.adrress}}</option>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label>{{'Building' | translate}}:</label>
+                <select name="edificio" [(ngModel)]="adrress" (change)="obtenerPlantas()" class="form-control">
+                    <option [selected]="building.adrress===adrress" *ngFor="let building of buildings" [value]="building.adrress">{{building.adrress}}</option>
                 </select>
-            </label>
-        </div><br>
-        <!--Para cajas he quitado el form-->
-        <div class="from-group">
-            <label>{{'Floor' | translate}}:</label>
-            <div class="floors-container">
-                <div *ngFor="let floor of floors" class="floor-box" (click)="onSelectFloor(floor.floorNumber)">
-                    <input type="radio" [value]="floor.floorNumber" [(ngModel)]="selectedFloor" id="floor-{{floor.floorNumber}}">
-                    <label for="floor-{{floor.floorNumber}}">{{'Floor' | translate}} {{floor.floorNumber}} ({{floor.ocupancy}}%)</label>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label>{{'Floor' | translate}}:</label>
+                <div class="floors-container">
+                    <div *ngFor="let floor of floors" class="btn btn-info" id="floors" (click)="onSelectFloor(floor.floorNumber)">
+                        <input type="radio" [value]="floor.floorNumber" [(ngModel)]="selectedFloor" id="floor-{{floor.floorNumber}}">
+                        <label for="floor-{{floor.floorNumber}}">{{'Floor' | translate}} {{floor.floorNumber}} ({{floor.ocupancy}}%)</label>
+                    </div>
                 </div>
             </div>
         </div>
-    <br><br>
-    <div class="container">
-        <a [routerLink]="isSelected ? 'reserve' : null">
-            <button *ngIf="selectedFloor || true" type="button" class="btn btn-success" [disabled]="!selectedFloor" [ngClass]="{'disabled-button': !selectedFloor}" (click)="isSelected = selectedFloor; obtenerSillas()">{{'Select' | translate}}</button>
-          </a>
-        <a href=""><button type="button" class="btn btn-success" style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
+        <div class="col-4">
+            <div class="container text-center">
+                <a [routerLink]="isSelected ? 'reserve' : null">
+                    <button  *ngIf="selectedFloor || true" type="button" class="btn btn-succes" [disabled]="!selectedFloor" [ngClass]="{'disabled-button': !selectedFloor}" (click)="isSelected = selectedFloor; obtenerSillas()">{{'Select' | translate}}</button>
+                </a>
+                <a href=""><button type="button" class="btn btn-danger" style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
+            </div>
+        </div>
+
     </div>
+
 </div>

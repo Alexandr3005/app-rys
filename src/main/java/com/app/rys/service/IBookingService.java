@@ -23,8 +23,8 @@ public interface IBookingService {
 	 * 
 	 * @return
 	 */
-	Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate,
-			HttpServletRequest request);
+	public Booking createReservation(String seatNumber, String adrress, String floorNumber, 
+			String city, Date reservationDate);
 
 
 	/**
@@ -51,6 +51,12 @@ public interface IBookingService {
 	 * {@inheritDoc}
 	 * 
 	 */
+
+
+	
+
+
+	public Booking updateReservationStatus(Long id, String bookingState);
 
 
 	/**

@@ -27,7 +27,14 @@ export class BookingService {
   createReservation(bookingPostBody:BookingPostBody): Observable<Booking> {
     const userId = localStorage.getItem('userId'); // obtiene el id del usuario actual almacenado en localStorage
     return this.httpClient.post<Booking>(`${this.baseURL}reserve/`,bookingPostBody);
+    
   }
+
+  updateReservationStatus(booking: Booking): Observable<Booking> {
+    console.log(booking.id)
+    return this.httpClient.patch<Booking>(`${this.baseURL}update-status/${booking.id}`, booking);
+  } 
+  
 
   
 }

@@ -35,3 +35,27 @@
     float: left; 
     width: 50%; 
 }
+
+.btn{
+  margin: 20px;
+  color: white;
+  font-weight: bold;
+  box-shadow: rgba(23, 162, 184, 0.4) 5px 5px, rgba(23, 162, 184, 0.3) 10px 10px, rgba(23, 162, 184, 0.2) 15px 15px, rgba(23, 162, 184, 0.1) 20px 20px, rgba(23, 162, 184, 0.05) 25px 25px;
+}
+
+.btn-info:focus, .btn-info:active {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+
+h3, #seat-info{
+  font-weight: bold;
+  color:#0081ce;
+
+}
+
+
+#cancel{
+  margin-left: 230px;
+}

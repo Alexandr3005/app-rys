@@ -46,8 +46,6 @@ import com.app.rys.utility.UtilityRYS;
 public class BookingService implements IBookingService {
 	
 	
-
-
 	@Autowired
 	private SeatRepository seatRepository;
 
@@ -67,7 +65,7 @@ public class BookingService implements IBookingService {
 	
 	private Long userId;
 	
-	//Funciona
+	//Funcionaaaaaaaaaaaa
 	@PostMapping("/login/")
 	public ResponseEntity<User> loginUser(@RequestBody User userData) {
 	    User user = repository.findByEmail(userData.getEmail());
@@ -96,12 +94,12 @@ public class BookingService implements IBookingService {
 	}
 
 
-
-public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate, HttpServletRequest request) {
-    HttpSession session = request.getSession();
-	    Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
-	    Optional<Floor> oFloor = building.getFloors().stream()
-	            .filter(floor -> floor.getFloorNumber().equals(floorNumber)).findFirst();
+	
+	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate) {
+	    
+		    Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
+		    Optional<Floor> oFloor = building.getFloors().stream()
+		            .filter(floor -> floor.getFloorNumber().equals(floorNumber)).findFirst();
 
 	    if (oFloor.isPresent()) {
 	        Floor floor = oFloor.orElseThrow();
@@ -198,7 +196,25 @@ public Booking createReservation(String seatNumber, String adrress, String floor
 	public List<Booking> getReservation() {
 		return bookingRepository.findAll();
 	}
+
+/*
+
+	@Override
+	public Booking updateReservationStatus(Long id, String bookingState) {
+	    Booking booking = (Booking) bookingRepository.findByid(id);
+	    booking.setBookingState(bookingState);
+	    return bookingRepository.save(booking);
+	}
+	*/
 	
+	public Booking updateReservationStatus(Long id, String bookingState) {
+	    Optional<Booking> optionalBooking = bookingRepository.findById(id);
+	   
+	        Booking booking = optionalBooking.get();
+	        booking.setBookingState(bookingState);
+	        return bookingRepository.save(booking);
+	   
+	}
 	
 	
 	/*

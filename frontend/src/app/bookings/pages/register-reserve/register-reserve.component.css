@@ -1,19 +1,4 @@
-/*para cajas*/
-.floors-container {
-  display: flex;
-}
 
-.floor-box {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border: 1px solid gray;
-  padding: 10px;
-  margin: 5px;
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-}
 
 input[type="radio"]{
   display: none;
@@ -27,4 +12,11 @@ input[type="radio"]{
 .disabled-button {
   background-color: gray;
   pointer-events: none;
+}
+
+#floors{
+  margin: 20px;
+  color: white;
+  font-weight: bold;
+  
 }

@@ -35,11 +35,21 @@
     border-style: none;
   }
   
-  .dropdown [class="nav-link dropdown-toggle"] {
-    color: white;   
-  }
-  
   [class = "nav-item dropdown"]{
      padding-right: 20px;
   }
+  
+  
+
+select{
+width: 200px;}
+
+  #menu{
+    background-color: #0081ce;
+  }
+
+  .nav-link{
+    font-weight: bold;
+  }
+
   

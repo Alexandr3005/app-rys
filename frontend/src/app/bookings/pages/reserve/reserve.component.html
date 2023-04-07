@@ -4,35 +4,43 @@
 <div class="container">
     <div class="float-parent-element">
         <div class="container float-child-element">
-            <div>
-                <h3>{{'Your booking' | translate}}</h3>
+            <div  id="seat-info" >
+                <h3 >{{'Your booking' | translate}}</h3>
+
+                <hr>
+                <h5 >
                 {{'Floor' | translate}}: {{floor}} <br>
                 {{'Address' | translate}}: {{adrress}} <br>
                 {{'City' | translate}}: {{city}} <br>
                 {{'Date' | translate}}: {{date}} <br>
+
+                </h5>
             </div>
             <br>
           
             <div class="from-group">
                 <label>{{'Seat' | translate}}:</label>
                 <div class="floors-container d-flex flex-wrap">
-                    <div *ngFor="let seat of seats; let i = index" class="floor-box"
-                        (click)="onSelectSeat(seat.seatNumber)">
+                    <div  class="btn btn-info" id="seat"*ngFor="let seat of seats; let i = index " 
+                        (click)="onSelectSeat(seat.seatNumber)" [ngClass]="getSeatStateClass(seat)">
+                        <div> {{seat.state}}</div>
+
                         <input type="radio" [value]="seat.seatNumber" [(ngModel)]="selectedSeat"
                             id="seat-{{seat.seatNumber}}">
                         <label for="seat-{{seat.seatNumber}}">{{'Seat' | translate}} {{seat.seatNumber}}</label>
                         <div class="w-100" *ngIf="(i + 1) % 4 === 0"></div>
+
                     </div>
                 </div>
             </div>
+
             <br><br>
             <div class="container">
-                <!--<a href=''><button type="button" class="btn btn-success" (click)="crearReserva()">Create</button></a>-->
                 <a [href]="Selected ? 'home' : null">
                     <button *ngIf="selectedSeat" type="button" class="btn btn-success" [disabled]="!selectedSeat"
                         (click)="validateAndSave()">{{'Select' | translate}}</button> </a>
-                <a routerLink=".."><button type="button" class="btn btn-success"
-                        style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
+                <a routerLink=".."><button type="button" class="btn btn-danger" id="cancel"
+                    >{{'Cancel' | translate}}</button></a>
             </div>
         </div>
 

@@ -62,5 +62,19 @@ export class ReserveComponent implements OnInit {
   onSelectSeat(seatNumber: any) {
     this.selectedSeat = seatNumber;
   }
+
+
+  //Estado cajas 
+
+  getSeatStateClass(seats: Seat) {
+    if (seats.state === 'ND') {
+      return 'btn btn-info disabled';
+    } else if (seats.state === 'D') {
+      return 'btn btn-info';
+    } else {
+      return '';
+    }
+  }
+   
   
 }

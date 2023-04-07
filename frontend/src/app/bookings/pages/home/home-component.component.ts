@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Booking } from '../../interfaces/booking';
 import { AuthService } from '../../../auth/services/auth.service';
 import { BookingService } from '../../services/booking.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -25,8 +26,7 @@ export class HomeComponentComponent implements OnInit {
   currentUser: any;
   router: any;
 
-  constructor(private bookingService: BookingService, public authService: AuthService) { }
-
+  constructor(private bookingService: BookingService, public authService: AuthService, private http: HttpClient ) { }
 
 
   ngOnInit(): void {
@@ -59,6 +59,17 @@ export class HomeComponentComponent implements OnInit {
 
   }
 
+  
+  updateReservationState(booking: Booking): void {
+    booking.bookingState = 'A';
+     
+    this.bookingService.updateReservationStatus(booking)
+        .subscribe((updatedBooking: Booking) => {
+            console.log('Estado de reserva actualizado:', updatedBooking);
+        });
+}
+
+
   private obtenerReservas() {
     this.bookingService.obtenerListadoDeReservas().subscribe(dato => {
       this.bookings = dato;
@@ -79,4 +90,10 @@ export class HomeComponentComponent implements OnInit {
       return false;
     }
   }
+
+  
+
+ 
 }
+
+

@@ -58,16 +58,11 @@
     <div class="row container"> <!--Recorrido de las reservas-->
 
         <ng-container *ngFor="let booking of bookings">
-                <div class="col-3 rounded reservation-box" *ngIf="booking.userId === currentUser.id">
-                    <p>User ID: {{booking.userId}}</p>
-
-
-
-
-                    <!-- MIRAR COMO SACAR ID DE USER AQUI -->
-
-
-
+            <div class="col-3 rounded reservation-box" *ngIf="currentUser.id === 1 || booking.userId === currentUser.id">
+                <p>User ID: {{booking.userId}}</p>
+                <p>Estado de reserva: {{booking.bookingState}}</p>
+                <button *ngIf="currentUser.id === 1" (click)="updateReservationState(booking)">Actualizar estado de reserva</button>
+              
                     <div class="nav-item dropdown position-relative">
 
                         <a class="nav-link position-absolute top-0 end-0" data-bs-toggle="modal"
