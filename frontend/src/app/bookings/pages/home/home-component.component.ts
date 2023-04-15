@@ -60,14 +60,23 @@ export class HomeComponentComponent implements OnInit {
   }
 
   
-  updateReservationState(booking: Booking): void {
-    booking.bookingState = 'A';
+  updateReservationStateCancel(booking: Booking): void {
+    booking.bookingState = 'Anulada';
      
     this.bookingService.updateReservationStatus(booking)
         .subscribe((updatedBooking: Booking) => {
             console.log('Estado de reserva actualizado:', updatedBooking);
         });
-}
+  }
+
+  updateReservationStateConfirm(booking: Booking): void {
+    booking.bookingState = 'Confirmada';
+     
+    this.bookingService.updateReservationStatus(booking)
+        .subscribe((updatedBooking: Booking) => {
+            console.log('Estado de reserva actualizado:', updatedBooking);
+        });
+  }
 
 
   private obtenerReservas() {

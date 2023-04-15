@@ -7,7 +7,7 @@ package com.app.rys.enums;
  *
  */
 public enum SeatState {
-	DISPONIBLE("D") ,NO_DISPONIBLE("ND");
+	DISPONIBLE("Disponible") ,NO_DISPONIBLE("No disponible");
 	
 	private String seatState;
 

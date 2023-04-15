@@ -42,7 +42,7 @@
                 <a [routerLink]="isSelected ? 'reserve' : null">
                     <button  *ngIf="selectedFloor || true" type="button" class="btn btn-succes" [disabled]="!selectedFloor" [ngClass]="{'disabled-button': !selectedFloor}" (click)="isSelected = selectedFloor; obtenerSillas()">{{'Select' | translate}}</button>
                 </a>
-                <a href=""><button type="button" class="btn btn-danger" style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
+                <a routerLink="/home"><button type="button" class="btn btn-danger" style="margin-left: 10px;">{{'Cancel' | translate}}</button></a>
             </div>
         </div>
 

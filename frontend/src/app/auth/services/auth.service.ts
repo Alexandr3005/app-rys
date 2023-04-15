@@ -12,6 +12,8 @@ import { User } from '../interfaces/user';
 export class AuthService {
   currentUser: any;
   userId: number; // Agregar nueva propiedad
+    tokenKey = 'myToken';
+
 
   private baseURL = "http://localhost:8080/api/reservation/";
   private currentUserKey = 'currentUser';
@@ -26,19 +28,38 @@ export class AuthService {
      }
     }
 
+    
     login(user: User): Observable<object> {
       console.log(user);
       return this.httpClient.post(`${this.baseURL}login/`, user).pipe(
         map((response: any) => {
           this.currentUser = response; //informacion del ususario
           console.log(response);
-          // Guardar el usuario actual en localStorage o sessionStorage
+          // Guardar el usuario actual y el token de sesión en localStorage o sessionStorage
           localStorage.setItem(this.currentUserKey, JSON.stringify(this.currentUser));
+          localStorage.setItem(this.tokenKey, response.token); 
           // Retornar la respuesta del servidor
           return response;
         })
       );
     }
+    
+    isLoggedIn(): boolean {
+      const token = localStorage.getItem(this.tokenKey);
+      console.log(token);
+
+      // Verifico si el token existe y es válido
+      if (token !== null && token !== undefined) {
+
+        // Verifico si el usuario actual existe y es válido
+        const currentUserString = localStorage.getItem(this.currentUserKey) || sessionStorage.getItem(this.currentUserKey);
+        const currentUser = currentUserString !== null ? JSON.parse(currentUserString) : null;
+        return currentUser !== null && currentUser !== undefined;
+      }
+      return false;
+    }
+    
+    
 
   register(user: User): Observable<object> {
     console.log(user);

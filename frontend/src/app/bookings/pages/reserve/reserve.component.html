@@ -36,7 +36,7 @@
 
             <br><br>
             <div class="container">
-                <a [href]="Selected ? 'home' : null">
+                <a routerLink="/home">
                     <button *ngIf="selectedSeat" type="button" class="btn btn-success" [disabled]="!selectedSeat"
                         (click)="validateAndSave()">{{'Select' | translate}}</button> </a>
                 <a routerLink=".."><button type="button" class="btn btn-danger" id="cancel"

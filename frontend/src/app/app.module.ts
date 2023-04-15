@@ -21,17 +21,16 @@ import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterReserveComponent } from './bookings/pages/register-reserve/register-reserve.component';
 import { SettingComponentComponent } from './auth/setting/setting-component.component';
 
+import { AuthLoginGuard } from './auth/auth-login.guard';
 
-const appRoutes:Routes=[
-  {path:'', redirectTo: 'login', pathMatch: 'full'},
-  {path:'home', component:HomeComponentComponent},
-  {path:'setting', component:SettingComponentComponent},
-  {path:'login', component:LoginComponent},
-  {path:'logout', component:LogoutComponent},
-  {path:'newReservation', component:RegisterReserveComponent},
-  {path:'newReservation/reserve', component:ReserveComponent},
-  {path:'register-user', component:RegisterUserComponent}
 
+const appRoutes: Routes = [
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponentComponent, canActivate: [AuthLoginGuard] },
+  { path: 'newReservation', component: RegisterReserveComponent, canActivate: [AuthLoginGuard] },
+  { path: 'newReservation/reserve', component: ReserveComponent, canActivate: [AuthLoginGuard] },
+  { path: 'register-user', component: RegisterUserComponent, canActivate: [AuthLoginGuard] },
+  { path: '', loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule) },
 ];
 
 

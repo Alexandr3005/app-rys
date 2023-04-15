@@ -21,7 +21,7 @@
             </svg>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" routerLink="/setting">{{ 'Profile settings' | translate }}</a></li>
+            <li><a class="dropdown-item" routerLink="/auth/settings">{{ 'Profile settings' | translate }}</a></li>
           </ul>
         </div>
   
@@ -35,9 +35,9 @@
         </a>
   
         <ul class="dropdown-menu dropdown-menu-end ">
-          <li><a class="dropdown-item" routerLink="/profile">{{ 'My profile' | translate }}</a></li>
-          <li><a class="dropdown-item" routerLink="/login">{{ 'Login' | translate }}</a></li>
-          <li><a class="dropdown-item" routerLink="/logout">{{ 'Logout' | translate }}</a></li>
+          <li><a class="dropdown-item" routerLink="/auth/profile">{{ 'My profile' | translate }}</a></li>
+          <li><a class="dropdown-item" routerLink="/auth/login">{{ 'Login' | translate }}</a></li>
+          <li><a class="dropdown-item" routerLink="/auth/logout" (click)="logout()">{{ 'Logout' | translate }}</a></li>
         </ul>
       </div>
       </div>
@@ -63,8 +63,8 @@
   </nav>
   <div class="container">
     <div class="d-flex justify-content-between">
-      <h4>Usuario: {{ authService.currentUser.fullName }}</h4>
-      <button class="btn" routerLink="/login" (click)="logout()">Cerrar sesión</button>
+      <p>Usuario: {{ authService.currentUser.fullName }}</p>
+      <button class="btn" routerLink="/auth/logout" (click)="logout()">Cerrar sesión</button>
     </div>
   </div>
   

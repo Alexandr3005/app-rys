@@ -6,7 +6,7 @@ package com.app.rys.enums;
  * @author Oleksandr
  */
 public enum BookingState {
-	ANULADA("A"), PENDIENTE("P"), CONFIRMADA("C");
+	ANULADA("Anulada"), PENDIENTE("Pendiente"), CONFIRMADA("Confirmada");
 
 	private String bookingState;
 
