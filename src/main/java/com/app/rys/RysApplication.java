@@ -40,14 +40,14 @@ public class RysApplication {
 		user.setEmail("admin.admin@gmail.com");
 		user.setPhone("985858565");
 		user.setPassword("admin");
-		user.setUserCode("U-1");
+		user.setConfirmPassword("admin");
 		
 		User user2 = new User();
 		user2.setFullName("user");
 		user2.setEmail("user.admin@gmail.com");
 		user2.setPhone("985858565");
 		user2.setPassword("user");
-		user2.setUserCode("U-2");
+		user2.setConfirmPassword("user");
 		
 		// edificio 1 y 2 de Madrid con 4 plantas (1->2) y (3->4)
 		// edificio 3 y 4 de Barcelona con 2 plantas (5->6) y (7->8)

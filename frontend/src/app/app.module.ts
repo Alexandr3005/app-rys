@@ -22,6 +22,7 @@ import { RegisterReserveComponent } from './bookings/pages/register-reserve/regi
 import { SettingComponentComponent } from './auth/setting/setting-component.component';
 
 import { AuthLoginGuard } from './auth/auth-login.guard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -47,12 +48,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterReserveComponent,
     ReserveComponent,
     RegisterUserComponent,
-    MenuComponent
+    MenuComponent,
+    
+    
     ],
   imports: [
     BrowserModule,
     FormsModule,
     NgbModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     TranslateModule.forRoot({

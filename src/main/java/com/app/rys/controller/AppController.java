@@ -49,20 +49,7 @@ public class AppController {
 	@Autowired
 	private BookingRepository bookingRepository;
 
-	/*
-	 * @PostMapping("/reserve/")
-	 * 
-	 * @CrossOrigin(origins = "http://localhost:4200") // creando objeto
-	 * BookingPostBody para agrupar tres strings public ResponseEntity<Booking>
-	 * createReservation(@RequestBody BookingPostBody bookingPostBody) throws
-	 * ParseException { Booking booking =
-	 * bookingService.createReservation(bookingPostBody.getSeatNumber(),
-	 * bookingPostBody.getAddress(),bookingPostBody.getFloorNumber(),bookingPostBody
-	 * .getCity().toUpperCase(),DateUtility.convertStringToDate(bookingPostBody.
-	 * getReservationDate())); if(booking != null) { return new
-	 * ResponseEntity<Booking>(booking, HttpStatus.CREATED); } else { return new
-	 * ResponseEntity<Booking>(HttpStatus.BAD_REQUEST); } }
-	 */
+	
 	// que dependa de la fecha
 	@PostMapping("/reserve/")
 	@CrossOrigin(origins = "http://localhost:4200") //sacarUsuario
@@ -73,7 +60,6 @@ public class AppController {
 				bookingPostBody.getSeatNumber() + "/" + bookingPostBody.getFloorNumber() + " "
 						+ bookingPostBody.getAddress() + ", " + bookingPostBody.getCity().toUpperCase())
 				.toString();
-		// algo asi usuarios String prueba = bookingPostBody.getAddress();
 
 		if (!bookingService.checkDateAvailability(reservationDate, informacionDeReserva)) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

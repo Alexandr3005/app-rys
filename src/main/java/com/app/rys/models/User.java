@@ -39,14 +39,19 @@ public class User {
 	@Email(message = "Email not valid", regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")
 	private String email;
 
-	@Pattern(message = "User code not valid", regexp = "^[a-z]{1}-[0-9]")
-	private String userCode;
-
-	@Pattern(message = "The password must have at least 8 and 16 characters, "
-			+ "at least one digit, at least one lowercase and at least one uppercase. "
-			+ "It can NOT have other symbols", regexp = "^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$")
-	private String password;
 	
+	
+	//Validacion compartida con password y password confirm
+	public static final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{8,16}$";
+	public static final String PASSWORD_PATTERN_MESSAGE = "The password must have at least 8 and 16 characters, "
+	        + "at least one digit, at least one lowercase and at least one uppercase. "
+	        + "It can NOT have other symbols";
+
+	@Pattern(message = PASSWORD_PATTERN_MESSAGE, regexp = PASSWORD_PATTERN)
+	private String password;
+
+	@Pattern(message = PASSWORD_PATTERN_MESSAGE, regexp = PASSWORD_PATTERN)
+	private String confirmPassword;
 
 	@Size(min = 9, max = 9, message = "The number phone must have 9 numbers")
 	private String phone;
@@ -58,14 +63,14 @@ public class User {
 	// Constructores: vacío y con campos
 	public User(Long id, String fullName,
 			@NotNull @Email(message = "Email not valid", regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}") String email,
-			@Pattern(message = "User code not valid", regexp = "^[a-z]{1}-[0-9]") String userCode,
-			@Pattern(message = "The password must have at least 8 and 16 characters, at least one digit, at least one lowercase and at least one uppercase. It can NOT have other symbols", regexp = "^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$") String password,
+			@Pattern(message = PASSWORD_PATTERN_MESSAGE, regexp = PASSWORD_PATTERN) String password,
+			@Pattern(message = PASSWORD_PATTERN_MESSAGE, regexp = PASSWORD_PATTERN) String confirmPassword,
 			@Size(min = 9, max = 9, message = "The number phone must have 9 numbers") String phone) {
 		this.id = id;
 		this.fullName = fullName;
 		this.email = email;
-		this.userCode = userCode;
 		this.password = password;
+		this.confirmPassword = confirmPassword;
 		this.phone = phone;
 	}
 
@@ -98,13 +103,8 @@ public class User {
 		this.email = email;
 	}
 
-	public String getUserCode() {
-		return userCode;
-	}
 
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
-	}
+
 
 	public String getPassword() {
 		return password;
@@ -112,6 +112,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 	public String getPhone() {
@@ -145,14 +153,14 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(userCode, other.userCode);
+		return Objects.equals(id, other.id);
 	}
 
 	// toString
 	@Override
 	public String toString() {
-		return String.format("User [id=%s, fullName=%s, email=%s, userCode=%s, password=%s, phone=%s]", id, fullName,
-				email, userCode, password, phone);
+		return String.format("User [id=%s, fullName=%s, email=%s, password=%s, confirmPassword=%s, phone=%s]", id, fullName,
+				email, password, confirmPassword, phone);
 	}
 
 }
