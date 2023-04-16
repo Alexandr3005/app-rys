@@ -29,7 +29,6 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponentComponent, canActivate: [AuthLoginGuard] },
   { path: 'newReservation', component: RegisterReserveComponent, canActivate: [AuthLoginGuard] },
   { path: 'newReservation/reserve', component: ReserveComponent, canActivate: [AuthLoginGuard] },
-  { path: 'register-user', component: RegisterUserComponent, canActivate: [AuthLoginGuard] },
   { path: '', loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule) },
 ];
 

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -28,7 +29,8 @@ public class User {
 
 	// propiedaes
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "my_entity_seq_gen")
+	@SequenceGenerator(name = "my_entity_seq_gen", sequenceName = "my_entity_seq", initialValue = 1)
 	private Long id;
 
 	private String fullName;
@@ -44,6 +46,7 @@ public class User {
 			+ "at least one digit, at least one lowercase and at least one uppercase. "
 			+ "It can NOT have other symbols", regexp = "^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$")
 	private String password;
+	
 
 	@Size(min = 9, max = 9, message = "The number phone must have 9 numbers")
 	private String phone;
