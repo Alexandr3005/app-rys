@@ -82,9 +82,15 @@ public class BookingService implements IBookingService {
 
 
 	@PostMapping("/register/")
-	public ResponseEntity<User> registerUser(@RequestBody User user) {
+	public ResponseEntity<?> registerUser(@RequestBody User user) {
+	    // Verificar si el correo ya existe
+	    User existingUser = userRepository.findByEmail(user.getEmail());
+	    if (existingUser != null) {
+	        return ResponseEntity.badRequest().body("Email already exists");
+	    }
+
 	    try {
-	        User savedUser = repository.save(user);
+	        User savedUser = userRepository.save(user);
 	        userId = savedUser.getId(); // almacenamiento del ID del usuario registrado
 	        return ResponseEntity.ok(savedUser);
 	    } catch (Exception e) {

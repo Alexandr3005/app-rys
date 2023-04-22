@@ -13,7 +13,10 @@ export class RegisterUserComponent implements OnInit {
 
   //Objeto user 
   user: User = new User();
-
+  showAlert= false;
+  emailExists = false;
+  submitted = false;
+  
 
   //Router redirigir
 
@@ -25,23 +28,54 @@ export class RegisterUserComponent implements OnInit {
 
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      fullName: ['', Validators.required],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', Validators.required],
-      phone: ['', [Validators.required]]
-    }, { validator: this.checkPasswords });
+  this.registerForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
+    fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(\s[a-zA-Z]+)+$/)]],
 
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', []],
+    phone: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]]
+  }, { validator: this.checkPasswords });
+}
+
+// Validador personalizado para comparar password y confirmPassword
+checkPasswords(group: FormGroup) {
+  let pass = group.controls['password'].value;
+  let confirmPass = group.controls['confirmPassword'].value;
+
+  return pass === confirmPass ? null : { notSame: true };
+}
+
+
+checkPasswords2(formGroup: FormGroup) {
+  const password = formGroup.controls['password'];
+  const confirmPassword = formGroup.controls['confirmPassword'];
+
+  if (password.value !== confirmPassword.value) {
+    return { notSame: true };
   }
+
+  return null;
+}
+
+
+  invalidField(field : string){
+    return this.registerForm.controls[field].invalid && (this.registerForm.controls[field].touched || this.registerForm.controls[field].dirty);
+    
+ }
 
   onSubmit() {
 
-     // Validar el formulario
-  if (this.registerForm.invalid) {
-    alert('Please fill all required fields');
+  // Verifica si el formulario es válido
+  if (this.registerForm.valid) {
+    // Si es válido, realiza las acciones que necesites aquí
+  } else {
+    // Si el formulario es inválido, marca todos los campos como tocados
+    Object.values(this.registerForm.controls).forEach(control => control.markAsTouched());
+
     return;
   }
+  
 
   // Actualizar el objeto user con los datos del formulario
   this.user.email = this.registerForm.controls['email'].value;
@@ -57,12 +91,7 @@ export class RegisterUserComponent implements OnInit {
 
     }
 
-  checkPasswords(group: FormGroup) { // Validador personalizado para comparar password y confirmPassword
-    let pass = group.controls['password'].value;
-    let confirmPass = group.controls['confirmPassword'].value;
 
-    return pass === confirmPass ? null : { notSame: true }
-  }
 
   userRegister() {
     this.authService.register(this.user).subscribe(
@@ -73,7 +102,8 @@ export class RegisterUserComponent implements OnInit {
 
       (error: any) => {
         console.error(error);
-        alert('Enter the correct name and password');
+
+        this.emailExists = true;
       }
     );
   }

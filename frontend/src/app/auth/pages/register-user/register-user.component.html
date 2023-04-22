@@ -2,31 +2,48 @@
   <div class="d-flex justify-content-center">
     <img src="/assets/img/logo.png" >
   </div>
+  <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    This email is already registered
+  </div>
+  
+
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex justify-content-center">
     <div>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" formControlName="email" id="email" name="email">
+        <input type="email" class="form-control" formControlName="email"  id="email" name="email">
+        <span *ngIf="invalidField('email') || emailExists"> 
+          {{ invalidField('email') ? 'Enter a valid email' : 'This email is already registered'}}
+        </span>
+
       </div>
       <br>
       <div class="form-group">
         <label for="fullName">Name</label>
         <input type="fullName" class="form-control" formControlName="fullName" id="fullname" name="fullname">
+        <span *ngIf="invalidField('fullName')  "> Enter your name and surname </span>
+
       </div>
       <br>
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" formControlName="password" id="password" name="password" placeholder="Password">
+        <span *ngIf="invalidField('password')"> The password must have a minimum of 6 characters</span>
       </div>
       <br>
+
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+        <span *ngIf="registerForm.hasError('notSame') && this.registerForm.controls['confirmPassword'].touched ">Las contraseñas no coinciden</span>
+      
       </div>
       <br>
+
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="phone" class="form-control" formControlName="phone" id="phone" name="phone">
+        <input type="phone" class="form-control" formControlName="phone"  id="phone" name="phone">
+        <span *ngIf="invalidField('phone')"> Enter a correct number phone</span>
       </div>
       <br>
       <button type="submit" class="btn btn-primary">Accept</button>
@@ -34,3 +51,7 @@
   </form>
 </div>
 <h2> {{registerForm.valid}}</h2>
+
+
+
+
