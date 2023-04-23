@@ -21,16 +21,15 @@
             <div class="from-group">
                 <label>{{'Seat' | translate}}:</label>
                 <div class="floors-container d-flex flex-wrap">
-                    <div  class="btn btn-info" id="seat"*ngFor="let seat of seats; let i = index " 
-                        (click)="onSelectSeat(seat.seatNumber)" [ngClass]="getSeatStateClass(seat)">
-                        <div> {{seat.state}}</div>
-
-                        <input type="radio" [value]="seat.seatNumber" [(ngModel)]="selectedSeat"
-                            id="seat-{{seat.seatNumber}}">
-                        <label for="seat-{{seat.seatNumber}}">{{'Seat' | translate}} {{seat.seatNumber}}</label>
-                        <div class="w-100" *ngIf="(i + 1) % 4 === 0"></div>
-
-                    </div>
+                    
+                    <div class="btn btn-info" id="seat" *ngFor="let seat of seats; let i = index " 
+                    (click)="onSelectSeat(seat.seatNumber)" [class.selected]="selectedSeat === seat.seatNumber" [ngClass]="getSeatStateClass(seat)">
+                    <div> {{seat.state}}</div>
+                    <input type="radio" [value]="seat.seatNumber" [(ngModel)]="selectedSeat" id="seat-{{seat.seatNumber}}">
+                    <label for="seat-{{seat.seatNumber}}">{{'Seat' | translate}} {{seat.seatNumber}}</label>
+                    <div class="w-100" *ngIf="(i + 1) % 4 === 0"></div>
+                </div>
+                
                 </div>
             </div>
 
