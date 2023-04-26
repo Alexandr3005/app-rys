@@ -23,6 +23,7 @@ import { SettingComponentComponent } from './auth/setting/setting-component.comp
 
 import { AuthLoginGuard } from './auth/auth-login.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileSettingsComponent } from './auth/pages/profile-settings/profile-settings.component';
 
 
 const appRoutes: Routes = [
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReserveComponent,
     RegisterUserComponent,
     MenuComponent,
+    ProfileSettingsComponent
     
     
     ],

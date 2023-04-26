@@ -5,12 +5,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { AuthLoginGuard } from './auth-login.guard';
 import { RegisterUserComponent } from './pages/register-user/register-user.component';
+import { ProfileSettingsComponent } from './pages/profile-settings/profile-settings.component';
 
 const routes: Routes = [
-  { path: 'auth/settings', component: SettingComponentComponent, canActivate: [AuthLoginGuard] },
+  { path: 'auth/settings', component: ProfileSettingsComponent, canActivate: [AuthLoginGuard] },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/logout', component: LogoutComponent, canActivate: [AuthLoginGuard] },
-  { path: 'auth/register-user', component: RegisterUserComponent, },
+  { path: 'auth/register-user', component: RegisterUserComponent },
 
 ];
 

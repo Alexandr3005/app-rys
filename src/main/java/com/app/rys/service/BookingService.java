@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +42,7 @@ import com.app.rys.utility.UtilityRYS;
 /**
  * Servicio de reservación
  * 
- * @author Naoufal
+ * 
  *
  */
 @Service
@@ -65,7 +68,7 @@ public class BookingService implements IBookingService {
 	
 	private Long userId;
 	
-	//Funcionaaaaaaaaaaaa
+	
 	@PostMapping("/login/")
 	public ResponseEntity<User> loginUser(@RequestBody User userData) {
 	    User user = repository.findByEmail(userData.getEmail());
@@ -79,7 +82,6 @@ public class BookingService implements IBookingService {
 	    }
 	}
 	
-
 
 	@PostMapping("/register/")
 	public ResponseEntity<?> registerUser(@RequestBody User user) {
@@ -98,9 +100,27 @@ public class BookingService implements IBookingService {
 	        return ResponseEntity.status(500).build();
 	    }
 	}
-
-
 	
+	@PutMapping("/users/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userData, HttpServletRequest request) {
+	    // Obtener el usuario actual de la base de datos
+	    Optional<User> optionalUser = userRepository.findById(id);
+	    if (optionalUser.isPresent()) {
+	        User user = optionalUser.get();
+	        // Actualizar los datos del usuario
+	        user.setEmail(userData.getEmail());
+	        user.setPassword(userData.getPassword());
+	        // ...
+	        // Guardar los cambios en la base de datos
+	        userRepository.save(user);
+	        return ResponseEntity.ok(user);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
+
+
 	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate) {
 	    
 		    Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
