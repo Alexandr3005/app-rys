@@ -10,14 +10,7 @@
     border-style: none;
   }
   
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
+ 
   
   .language-picker-area {
     display: flex;
@@ -41,8 +34,7 @@
   
   
 
-select{
-width: 200px;}
+
 
   #menu{
     background-color: #0081ce;
@@ -51,5 +43,24 @@ width: 200px;}
   .nav-link{
     font-weight: bold;
   }
+  
+  h5{
+    color: white;
+    margin-right: 30px;
+  }
 
+
+  .proba{
+    margin-right: 30px;
+  }
+/*
+  #navbarNav{
+    margin-left: 200px;
+  }
+  */
+
+  .navbar-nav{
+    display: flex;
+    justify-content: center; /* centers the content horizontally */
+  }
   

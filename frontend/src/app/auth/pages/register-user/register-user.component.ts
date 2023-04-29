@@ -38,8 +38,6 @@ export class RegisterUserComponent implements OnInit {
     }, { validator: this.checkPasswords });
   }
 
-
-
   // Validador personalizado para comparar password y confirmPassword
   checkPasswords(group: FormGroup) {
     let pass = group.controls['password'].value;
@@ -48,18 +46,7 @@ export class RegisterUserComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true };
   }
 
-  /*
-  checkPasswords2(formGroup: FormGroup) {
-    const password = formGroup.controls['password'];
-    const confirmPassword = formGroup.controls['confirmPassword'];
-  
-    if (password.value !== confirmPassword.value) {
-      return { notSame: true };
-    }
-  
-    return null;
-  }
-  */
+
 
   invalidField(field: string) {
 

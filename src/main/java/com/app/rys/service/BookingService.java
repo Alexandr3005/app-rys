@@ -108,8 +108,12 @@ public class BookingService implements IBookingService {
 	    if (optionalUser.isPresent()) {
 	        User user = optionalUser.get();
 	        // Actualizar los datos del usuario
-	        user.setEmail(userData.getEmail());
+	       
+	  
+	        user.setFullName(userData.getFullName());
 	        user.setPassword(userData.getPassword());
+	        user.setConfirmPassword(userData.getConfirmPassword());
+	        user.setPhone(userData.getPhone());
 	        // ...
 	        // Guardar los cambios en la base de datos
 	        userRepository.save(user);

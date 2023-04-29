@@ -94,6 +94,7 @@ public class User {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
+	
 
 	public String getEmail() {
 		return email;
@@ -102,8 +103,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 
 	public String getPassword() {
@@ -162,5 +161,8 @@ public class User {
 		return String.format("User [id=%s, fullName=%s, email=%s, password=%s, confirmPassword=%s, phone=%s]", id, fullName,
 				email, password, confirmPassword, phone);
 	}
+
+	
+
 
 }
