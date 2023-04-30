@@ -33,8 +33,6 @@ import com.app.rys.repository.SeatRepository;
 import com.app.rys.repository.UserRepository;
 import com.app.rys.utility.UtilityRYS;
 
-
-
 @RestController
 @RequestMapping("/api/reservation")
 @CrossOrigin(origins = "http://localhost:4200")

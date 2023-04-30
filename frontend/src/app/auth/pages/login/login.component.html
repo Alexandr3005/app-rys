@@ -1,4 +1,4 @@
-<p>login works!</p>
+
 
 
 <div class="d-flex justify-content-center">
@@ -7,7 +7,7 @@
 
 <div class="alert-center">
   <div *ngIf="loginError" class="alert alert-danger alert-container">
-    User not found or wrong credentials
+   {{ 'User not found or wrong credentials'| translate}}
   </div>
 </div>
 
@@ -19,12 +19,12 @@
 
     <div>
       <div  class="form-group" >
-        <label for="email">Email address</label>
+        <label for="email">{{'Email address' | translate}}</label>
         <input type="email" class="form-control " formControlName="email"  id="email" name="email" 
         [ngClass]="{'error': invalidField('email')}">
         
         <span *ngIf="invalidField('email')"> 
-          Enter a valid email
+          {{'Enter a valid email' | translate}}
         </span>
 
       </div>
@@ -32,19 +32,18 @@
       <br>
 
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">{{'Password' | translate}}</label>
         <input type="password" class="form-control " formControlName="password" id="password" name="password" placeholder="Password"
         [ngClass]="{'error': invalidField('password')}">
-        <span *ngIf="invalidField('password')"> Enter a valid password</span>
+        <span *ngIf="invalidField('password')"> {{'Enter a valid password' | translate}}</span>
       </div>
 
       <br><br>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">{{'Sign up' | translate}}</button>
+      <button class="btn" id="register" routerLink="/auth/register-user"> {{'Login' | translate}}
 
-      <button class="btn-register">
 
-        <a  id="register" routerLink="/auth/register-user"> Register</a>
      </button>
 
     </div>

@@ -31,4 +31,10 @@ span {
   .error {
     border-color: red;
   }
+
+  .btn-primary{
+    font-weight: bold;
+    border-width: 2px;
+    width: 127px;
+  }
   

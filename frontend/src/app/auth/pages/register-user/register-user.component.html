@@ -11,52 +11,54 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex justify-content-center" >
       <div>
         <div class="form-group" >
-          <label for="exampleInputEmail1">Email address</label>
+          <h3> {{'Login' | translate}} </h3>
+
+          <br>
+          <label for="exampleInputEmail1">{{'Email address' | translate}}</label>
           <input type="email" class="form-control " formControlName="email"  id="email" name="email" 
           [ngClass]="{'error': invalidField('email') || emailExists}">
           
           <span *ngIf="invalidField('email') || emailExists"> 
-            {{ invalidField('email') ? 'Enter a valid email' : 'This email is already registered'}}
+            {{ invalidField('email') ? ('Enter a valid email' | translate) : ('This email is already registered' | translate) }}
           </span>
-
         </div>
         <br>
         <div class="form-group">
-          <label for="fullName">Name</label>
+          <label for="fullName">{{'Name' | translate}}</label>
           <input type="fullName" class="form-control" formControlName="fullName" id="fullname" name="fullname" 
           [ngClass]="{'error': invalidField('fullName') }"
           >
-          <span *ngIf="invalidField('fullName')  "> Enter your name and surname </span>
+          <span *ngIf="invalidField('fullName')  "> {{'Enter your name and surname' | translate}} </span>
 
         </div>
         <br>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">{{'Password' | translate}}</label>
           <input type="password" class="form-control  " formControlName="password" id="password" name="password" placeholder="Password"
           [ngClass]="{'error': invalidField('password')}">
-          <span *ngIf="invalidField('password')"> The password must have a minimum of 6 characters</span>
+          <span *ngIf="invalidField('password')"> {{'The password must have a minimum of 6 characters' | translate}}</span>
         </div>
         <br>
 
         <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
+          <label for="confirmPassword">{{'Confirm Password' | translate}}</label>
           <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
           [ngClass]="{'error': isConfirmPasswordInvalid()}"
           >
-          <span *ngIf="registerForm.hasError('notSame') && this.registerForm.controls['confirmPassword'].touched ">Passwords must match</span>
+          <span *ngIf="registerForm.hasError('notSame') && this.registerForm.controls['confirmPassword'].touched ">{{'Passwords must match' | translate}}</span>
 
         </div>
         <br>
 
         <div class="form-group">
-          <label for="phone">Phone</label>
+          <label for="phone">{{'Phone' | translate}}</label>
           <input type="phone" class="form-control" formControlName="phone"  id="phone" name="phone"
           [ngClass]="{'error': invalidField('phone')}"
           >
-          <span *ngIf="invalidField('phone')"> Enter a correct number phone</span>
+          <span *ngIf="invalidField('phone')"> {{'Enter a correct number phone' | translate}}</span>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Accept</button>
+        <button type="submit" class="btn btn-primary">{{'Login' | translate}}</button>
       </div>
     </form>
   </div>

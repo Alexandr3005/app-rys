@@ -28,5 +28,28 @@
 
     "Your booking": "Tu reserva",
     "Address":"Direccion",
-    "You can see our floor plan here":"Puedes ver nuestro plano de planta aqui"
+    "You can see our floor plan here":"Puedes ver nuestro plano de planta aqui",
+
+    "User not found or wrong credentials": " Usuario no encontrado o credenciales incorrectas",
+    "Email address":"Correo electronico",
+    "Password":"Contraseña",
+    "Enter a valid email":"Introduzca un correo valido",
+    "Enter a valid password":"Introduzca una contraseña valida",
+    "Sign up":"Registrarse",
+
+        
+    "Enter your name and surname":"Introduzca su nombre y apellido",
+    "The password must have a minimum of 6 characters":"La contraseña debe tener al menos 6 caracteres",
+    "Passwords must match":"Las contraseñas no coinciden",
+    "Phone": "Telefono",
+    "Enter a correct number phone": "Introduce el numbero correcto",
+    "Name":"Nombre",
+    "This email is already registered": "Este correo electrónico ya está registrado",
+    "Confirm password": "Confirmar contraseña",
+    "Hello": "Hola",
+    "Return":"Volver",
+    "Confirm": "Confirmar"
+
+    
+
   }

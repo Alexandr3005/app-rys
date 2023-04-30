@@ -16,23 +16,8 @@
 
 
     <div class="float-parent-element">
-        <div class="float-child-element">
-            <div class="red">
-                <div class="">
-                    <h6 *ngIf="bookings">{{'You have ' + bookings.length + ' confirmed reservations this month' |
-                        translate}}</h6>
-                    <a routerLink="/newReservation"><button type="button" class="btn btn-primary">{{'New reservation' |
-                            translate}}</button></a>
-                </div>
-            </div>
 
 
-        </div>
-        <div class="float-child-element">
-            <div class="yellow">
-                <img src="/assets/img/reserveHome.png" width="350" height="250">
-            </div>
-        </div>
     </div>
     <br>
 
@@ -46,9 +31,35 @@
     <div>
 
     </div>
+
+    <h6 *ngIf="bookings">{{'You have ' + bookings.length + ' confirmed reservations this month' |
+        translate}}</h6>
+
+    <div class="d-flex justify-content-end">
+        <div class="red">
+
+
+            <button routerLink="/newReservation" type="button" class="btn btn-primary">{{'New reservation' |
+                translate}}</button>
+
+        </div>
+
+        <div class="">
+            <br><br>
+            <div class="imagen">
+                <img class="rounded" src="/assets/img/home.png" width="350" height="250">
+            </div>
+
+        </div>
+
+
+    </div>
+
     <div class="row container"> <!--Recorrido de las reservas-->
 
-        <ng-container *ngFor="let booking of bookings">
+
+        <ng-container *ngFor="let booking of bookings" class="col-5">
+
             <div class="col-3 rounded reservation-box"
                 *ngIf="currentUser.id === 1 || booking.userId === currentUser.id">
 
@@ -123,21 +134,21 @@
                 <div *ngIf="currentUser.id === 1">User ID: {{booking.userId}}</div>
 
                 <div>{{booking.reservationDate | date: 'd MMMM' }}, {{booking.reservationDate | date: 'yyyy'}}</div>
-             
+
                 <div>{{booking.informacionDeReserva.split(' ')[4]}}</div>
 
-                
-          
-                <div>Estado de reserva: {{booking.bookingState}}</div>
+
+
+                <div>{{'Reservation status:'}} {{booking.bookingState}}</div>
                 <br><br>
                 <div class="row">
                     <div class="col d-flex">
-                      <button *ngIf="currentUser.id === 1" (click)="updateReservationStateCancel(booking)"
-                              class="btn btn-danger me-2">Cancelar</button>
-                      <button *ngIf="currentUser.id === 1" (click)="updateReservationStateConfirm(booking)"
-                              class="btn btn-primary ms-2">Confirmar</button>
+                        <button *ngIf="currentUser.id === 1" (click)="updateReservationStateCancel(booking)"
+                            class="btn btn-danger me-2">{{'Cancel' | translate}}</button>
+                        <button *ngIf="currentUser.id === 1" (click)="updateReservationStateConfirm(booking)"
+                            class="btn btn-primary ms-2">{{'Confirm' | translate}}</button>
                     </div>
-                  </div>
+                </div>
 
             </div>
         </ng-container>

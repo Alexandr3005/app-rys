@@ -27,6 +27,30 @@
 
     "Your booking": "Your booking",
     "Address":"Address",
-    "You can see our floor plan here":"You can see our floor plan here"
+    "You can see our floor plan here":"You can see our floor plan here",
+
+    "User not found or wrong credentials":  "User not found or wrong credentials",
+    "Email address":"Email address",
+    "Password":"Password",
+    "Enter a valid email":"Enter a valid email",
+    "Enter a valid password":"Enter a valid password",
+    
+    "Enter your name and surname":"Enter a valid name and surname",
+    "The password must have a minimum of 6 characters":"The password must have a minimum of 6 characters",
+    "Passwords must match":"Passwords must match",
+    "Phone": "Phone",
+    "Enter a correct number phone": "Enter a correct number phone",
+    "Name":"Name",
+    "This email is already registered":"This email is already registered",
+    "Confirm password":"Confirm Password",
+    
+    "Sign up":"Sign up",
+    "Hello": "Hello",
+    "Return":"Return",
+    "Confirm": "Confirm",
+    "Reservation status": "Reservation status"
+   
+  
+   
 
   }

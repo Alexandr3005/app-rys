@@ -6,8 +6,8 @@
     "language.spanish": "Espagnol",
     "title": "Super APP géniale",
     "My profile": "Mon profil",
-    "Login": "Commencer la session",
-    "Logout": "Fermer la session",
+    "Login": "Identifiant",
+    "Logout": "Déconnexion",
     "Profile settings": "Paramètres de profil",
     "Back to Home": "Retourner à Home",
 
@@ -28,6 +28,27 @@
 
     "Your booking": "Votre réservation",
     "Address":"Adresse",
-    "You can see our floor plan here":"Vous pouvez voir notre plan d'étage ici"
+    "You can see our floor plan here":"Vous pouvez voir notre plan d'étage ici",
+
+    "User not found or wrong credentials":"Utilisateur introuvable ou informations d'identification erronées",
+    "Email address":"Adresse e-mail",
+    "Password":"Mot de passe",
+    "Enter a valid email":"Entrez le bon e-mail",
+    "Enter a valid password":"Entrer le bon mot de passe",
+    "Sign up":"S'inscrire",
+
+    "Enter your name and surname":"Entrez votre nom et prénom valides",
+    "The password must have a minimum of 6 characters":"Le mot de passe doit contenir au moins 6 caractères",
+    "Passwords must match":"Les mots de passe doivent correspondre",
+    "Phone": "Téléphone",
+    "Enter a correct number phone": "Entrez un numéro de téléphone correct",
+    "Name":"Nom",
+    "This email is already registered": "Cet e-mail est déjà enregistré",
+    "Confirm password": "Confirmez le mot de passe",
+    "Hello": "Salut",
+    "Return":"Retour",
+    "Confirm": "Confirmez"
+
+  
 
   }

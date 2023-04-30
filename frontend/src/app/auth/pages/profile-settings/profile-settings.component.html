@@ -6,63 +6,67 @@
 
   <div class="alert-center">
     <div *ngIf="updated" class="alert alert-success alert-container">
-      Your profile has been updated
+      {{'Your profile has been updated' | translate}}
     </div>
   </div>
 
-  <h2> My profile</h2>
+  <h2> {{'My profile' | translate}}</h2>
 
   <hr>
 
 
+
     <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="d-flex justify-content-center">
   
+       
       <div>
+        <h4> {{'Edit profile' | translate}}</h4>
+        <br> 
 
         <div class="form-group">
-          <label for="fullName">Full name</label>
+          <label for="fullName">{{'Full name' | translate}}</label>
           <input type="text" class="form-control" formControlName="fullName"  id="fullName" 
           [ngClass]="{'error': invalidField('fullName')}"
           >
-          <span *ngIf="invalidField('fullName')"> Enter a correct name</span>
+          <span *ngIf="invalidField('fullName')"> {{'Enter a correct name' | translate}}</span>
         </div>
 
   
         <br>
   
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">{{'Password' | translate}}</label>
           <input type="password" class="form-control " formControlName="password" id="password" name="password" placeholder="Password"
           [ngClass]="{'error': invalidField('password')}">
-          <span *ngIf="invalidField('password')"> Enter a valid password</span>
+          <span *ngIf="invalidField('password')"> {{'Enter a valid password' | translate}}</span>
         </div>
   
         <br>
         <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
+          <label for="confirmPassword">{{'Confirm Password' | translate}}</label>
           <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
           [ngClass]="{'error': isConfirmPasswordInvalid()}"
           >
-          <span *ngIf="settingsForm.hasError('notSame') && this.settingsForm.controls['confirmPassword'].touched ">Passwords must match</span>
+          <span *ngIf="settingsForm.hasError('notSame') && this.settingsForm.controls['confirmPassword'].touched ">{{'Passwords must match' | translate}}</span>
 
         </div>
         <br>
 
         <div class="form-group">
-          <label for="phone">Phone</label>
+          <label for="phone">{{'Phone' | translate}}</label>
           <input type="phone" class="form-control" formControlName="phone"  id="phone" name="phone"
           [ngClass]="{'error': invalidField('phone')}"
           >
-          <span *ngIf="invalidField('phone')"> Enter a correct number phone</span>
+          <span *ngIf="invalidField('phone')"> {{'Enter a correct number phone' | translate}}</span>
         </div>
         <br>
 
 
 
         <br>
-    <button class="btn btn-primary" type="submit">Enviar</button>
+    <button class="btn btn-primary" type="submit">{{'Enviar' | translate}}</button>
 
-    <button class="btn" id="return" routerLink="/home"> Return </button>
+    <button class="btn" id="return" routerLink="/home"> {{'Return' | translate}} </button>
 
       </div>
   
