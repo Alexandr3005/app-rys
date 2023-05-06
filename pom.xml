@@ -50,16 +50,65 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.4</version>
 		</dependency>
+		
+		<dependency>
+    <groupId>net.sourceforge.plantuml</groupId>
+    <artifactId>plantuml</artifactId>
+    <version>1.2022.2</version>
+</dependency>
+
 		<!--Dependencias para la validación-->
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+	
+	
+		<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <version>2.6.3</version>
+	        </plugin>
+	        
+	        
+	        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+                <execution>
+                    <id>generate-uml-diagram</id>
+                    <phase>compile</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                    <configuration>
+                        <executable>java</executable>
+                        <arguments>
+                            <argument>-jar</argument>
+                            <argument>${plantuml.jar.path}</argument>
+                            <argument>${project.basedir}/src/main/java/com/example/**/*.java</argument>
+                            <argument>-o</argument>
+                            <argument>${project.build.directory}/generated-docs</argument>
+                            <argument>-tpng</argument>
+                        </arguments>
+                    </configuration>
+                </execution>
+            </executions>
+            <dependencies>
+                <dependency>
+                    <groupId>net.sourceforge.plantuml</groupId>
+                    <artifactId>plantuml</artifactId>
+                    <version>1.2022.2</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+	    </plugins>
+	    
+	    
 	</build>
+	
+	
+
+
 
 </project>

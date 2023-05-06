@@ -3,7 +3,7 @@
 
 export class Seat {
 //sacar el estado
-    id:Number;
-    seatNumber:String;
-    state:String;
+    id:number;
+    seatNumber:string;
+    state:string;
 }

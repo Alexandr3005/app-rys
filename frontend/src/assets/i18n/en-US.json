@@ -48,7 +48,15 @@
     "Hello": "Hello",
     "Return":"Return",
     "Confirm": "Confirm",
-    "Reservation status": "Reservation status"
+    "Confirmed":"Confirmed",
+    "Pending":"Pending",
+    "Cancelled":"Cancelled",
+    "Reservation status": "Reservation status",
+
+    "Available":"Available",
+    "Not available":"Not available"
+    
+
    
   
    

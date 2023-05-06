@@ -1,9 +1,9 @@
 export class Booking {
 
     id:number; 
-    bookingCode:String;
-    bookingState:String;
-    informacionDeReserva:String;
+    bookingCode:string;
+    bookingState:string;
+    informacionDeReserva:string;
     reservationDate:Date;
     userId: number;
 

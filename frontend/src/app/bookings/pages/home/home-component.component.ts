@@ -3,6 +3,7 @@ import { Booking } from '../../interfaces/booking';
 import { AuthService } from '../../../auth/services/auth.service';
 import { BookingService } from '../../services/booking.service';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class HomeComponentComponent implements OnInit {
   currentUser: any;
   router: any;
 
-  constructor(private bookingService: BookingService, public authService: AuthService, private http: HttpClient ) { }
+  constructor(private bookingService: BookingService, public authService: AuthService, private http: HttpClient
+    , private translateService: TranslateService ) { }
 
 
   ngOnInit(): void {
@@ -61,8 +63,8 @@ export class HomeComponentComponent implements OnInit {
 
   
   updateReservationStateCancel(booking: Booking): void {
-    booking.bookingState = 'Anulada';
-     
+    booking.bookingState = this.translateService.instant('Cancelled');
+
     this.bookingService.updateReservationStatus(booking)
         .subscribe((updatedBooking: Booking) => {
             console.log('Estado de reserva actualizado:', updatedBooking);
@@ -70,8 +72,8 @@ export class HomeComponentComponent implements OnInit {
   }
 
   updateReservationStateConfirm(booking: Booking): void {
-    booking.bookingState = 'Confirmada';
-     
+    booking.bookingState = this.translateService.instant('Confirmed');
+
     this.bookingService.updateReservationStatus(booking)
         .subscribe((updatedBooking: Booking) => {
             console.log('Estado de reserva actualizado:', updatedBooking);

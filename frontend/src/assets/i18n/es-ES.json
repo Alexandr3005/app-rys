@@ -48,7 +48,16 @@
     "Confirm password": "Confirmar contraseña",
     "Hello": "Hola",
     "Return":"Volver",
-    "Confirm": "Confirmar"
+    "Confirm": "Confirmar",
+    "Pending":"Pendiente",
+    "Cancelled":"Cancelada",
+    "Confirmed":"Confirmada",
+
+    "Reservation status:": "Estado de la reserva:",
+    "Available":"Disponible",
+    "Not available":"No disponible"
+   
+
 
     
 
