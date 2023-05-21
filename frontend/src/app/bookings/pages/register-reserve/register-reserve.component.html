@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label>{{'Floor' | translate}}:</label>
                 <div class="floors-container">
-                    <div *ngFor="let floor of floors" class="floor-btn btn-info"
+                    <div *ngFor="let floor of floors" class="floor-btn btn-info" id="planta"
                          [ngClass]="{ 'selected': floor.floorNumber === selectedFloor }"
                          (click)="onSelectFloor(floor.floorNumber)">
                       <input type="radio" [value]="floor.floorNumber" [(ngModel)]="selectedFloor" id="floor-{{floor.floorNumber}}">
@@ -47,18 +47,16 @@
         </div>
     </div>
 </div>
-<div class="col-4">
+<div class="col-lg-4 col-md-6 col-sm-12">
     <div class="container text-center">
-        <a [routerLink]="isSelected ? 'reserve' : null">
-            <button *ngIf="selectedFloor || true" type="button" class="btn btn-succes" [disabled]="!selectedFloor"
-                [ngClass]="{'disabled-button': !selectedFloor}"
-                (click)="isSelected = selectedFloor; obtenerSillas()">{{'Select' | translate}}</button>
-        </a>
-        <a routerLink="/home"><button type="button" class="btn btn-danger" style="margin-left: 10px;">{{'Cancel' |
-                translate}}</button></a>
+      <a [routerLink]="isSelected ? 'reserve' : null">
+        <button *ngIf="selectedFloor || true" type="button" class="btn btn-success" [disabled]="!selectedFloor"
+          [ngClass]="{'disabled-button': !selectedFloor}"
+          (click)="isSelected = selectedFloor; obtenerSillas()">{{'Select' | translate}}</button>
+      </a>
+      <a routerLink="/home">
+        <button type="button" class="btn btn-danger ms-2">{{'Cancel' | translate}}</button>
+      </a>
     </div>
-</div>
-
-</div>
-
+  </div>
 </div>

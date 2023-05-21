@@ -28,13 +28,7 @@
     background-color: gray;
     pointer-events: none;
   }
-  .float-parent-element { 
-    width: 100%; 
-} 
-.float-child-element { 
-    float: left; 
-    width: 50%; 
-}
+
 
 .btn{
   margin: 20px;
@@ -63,4 +57,19 @@ h3, #seat-info{
 
   border: 3px solid #054282;
 
+}
+
+.btn-info {
+  width: 200px;
+
+}
+
+@media (max-width: 522px) {
+  .btn-info {
+    width: 400px; /* Cambiar el tamaño a 100px cuando el ancho de la pantalla sea menor a 522px */
+  }
+}
+
+.imagen{
+  margin-left:50px
 }

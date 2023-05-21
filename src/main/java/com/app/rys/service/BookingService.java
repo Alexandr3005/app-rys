@@ -105,15 +105,13 @@ public class BookingService implements IBookingService {
 	    Optional<User> optionalUser = userRepository.findById(id);
 	    if (optionalUser.isPresent()) {
 	        User user = optionalUser.get();
-	        // Actualizar los datos del usuario
-	       
-	  
+	     
+
 	        user.setFullName(userData.getFullName());
 	        user.setPassword(userData.getPassword());
 	        user.setConfirmPassword(userData.getConfirmPassword());
 	        user.setPhone(userData.getPhone());
-	        // ...
-	        // Guardar los cambios en la base de datos
+	    
 	        userRepository.save(user);
 	        return ResponseEntity.ok(user);
 	    } else {
@@ -123,53 +121,53 @@ public class BookingService implements IBookingService {
 
 
 
-	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city, Date reservationDate) {
-	    
-		    Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
-		    Optional<Floor> oFloor = building.getFloors().stream()
-		            .filter(floor -> floor.getFloorNumber().equals(floorNumber)).findFirst();
+	public Booking createReservation(String seatNumber, String adrress, String floorNumber, String city,
+			Date reservationDate) {
 
-	    if (oFloor.isPresent()) {
-	        Floor floor = oFloor.orElseThrow();
-	        Optional<Seat> oSeat = floor.getSeats().stream()
-	                .filter(seat -> seat.getSeatNumber().equals(seatNumber)).findFirst();
+		Building building = buildingRepository.findByCityAndAdrress(city, adrress).get(0);
+		Optional<Floor> oFloor = building.getFloors().stream()
+				.filter(floor -> floor.getFloorNumber().equals(floorNumber)).findFirst();
 
-	        if (oSeat.isPresent()) {
-	            Seat existedSeat = oSeat.get();
+		if (oFloor.isPresent()) {
+			Floor floor = oFloor.orElseThrow();
+			Optional<Seat> oSeat = 
+					floor.getSeats().stream().filter(seat -> seat.getSeatNumber().equals(seatNumber)).findFirst();
 
-	            Long reservationCounter = bookingRepository.count();
-	            Booking booking = new Booking(UtilityRYS.generateBookingCode(reservationCounter), reservationDate,
-	                    BookingState.PENDIENTE.getState());
+			if (oSeat.isPresent()) {
+				Seat existedSeat = oSeat.get();
 
-	            booking.setInformacionDeReserva(new StringBuilder(existedSeat.getSeatNumber() + "/" + floor.getFloorNumber()
-	                    + " " + building.getAdrress() + ", " + building.getCity()).toString());
-	            existedSeat.setState(SeatState.NO_DISPONIBLE.getState());
+				Long reservationCounter = bookingRepository.count();
+				Booking booking = new Booking(UtilityRYS.generateBookingCode(reservationCounter),
+						reservationDate, BookingState.PENDIENTE.getState());
 
+				booking.setInformacionDeReserva(new StringBuilder(existedSeat.getSeatNumber() + "/"
+				+ floor.getFloorNumber() + " " + building.getAdrress() + ", " + building.getCity()).toString());
+				existedSeat.setState(SeatState.NO_DISPONIBLE.getState());
+				
+				User user = userRepository.findByid(userId);
 
-	            User user = userRepository.findByid(userId); // Buscar usuario por userId en la base de datos
-	        
-	            if (user == null) {
-	                // Si el usuario no se encuentra en la base de datos, puedes lanzar una excepción
-	                // throw new RuntimeException("User not found");
-	            }
+				booking.setUser(user);
+				
+				try {
+					userRepository.save(user);
+					bookingRepository.save(booking);
+					seatRepository.save(existedSeat);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
-	            booking.setUser(user);
-	            try {
-	                userRepository.save(user);
-	                bookingRepository.save(booking);
-	                seatRepository.save(existedSeat);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
+				return booking;
+			}
+		}
 
-	            return booking;
-	        }
-	    }
-
-	    return null;
+		return null;
 	}
 
+	/*
+	if (user == null) {
 
+	}
+*/
 
 	/**
 	 * {@inheritDoc}
@@ -225,15 +223,7 @@ public class BookingService implements IBookingService {
 		return bookingRepository.findAll();
 	}
 
-/*
 
-	@Override
-	public Booking updateReservationStatus(Long id, String bookingState) {
-	    Booking booking = (Booking) bookingRepository.findByid(id);
-	    booking.setBookingState(bookingState);
-	    return bookingRepository.save(booking);
-	}
-	*/
 	
 	public Booking updateReservationStatus(Long id, String bookingState) {
 	    Optional<Booking> optionalBooking = bookingRepository.findById(id);
@@ -241,16 +231,8 @@ public class BookingService implements IBookingService {
 	        Booking booking = optionalBooking.get();
 	        booking.setBookingState(bookingState);
 	        return bookingRepository.save(booking);
-	   
 	}
 	
 	
-	/*
-	User user = userRepository.findById(userId).orElse(null);
-	if (user == null) {
-		throw new Exception("User not found");
-	}
 	
-	*/
-
 }

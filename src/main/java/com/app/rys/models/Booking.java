@@ -16,15 +16,10 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * Entidad reserva
- * 
- * @author Oleksandr
- */
 @Entity
 public class Booking {
 
-	// propiedades
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -32,7 +27,6 @@ public class Booking {
 	@Pattern(message = "Booking code not valid", regexp = "^[a-z]{1}-[0-9]")
 	private String bookingCode;
 
-	//@Temporal(TemporalType.TIMESTAMP) // Fecha y hora
 	@Temporal(TemporalType.DATE)
 	private Date reservationDate;
 

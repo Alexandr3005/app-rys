@@ -1,54 +1,58 @@
-
-
 <app-menu></app-menu>
 <div class="container">
-    <div class="float-parent-element">
-        <div class="container float-child-element">
-            <div  id="seat-info" >
-                <h3 >{{'Your booking' | translate}}</h3>
+    <div class="row">
+        <div class="col-lg-7">
+            <div id="seat-info">
+                <h3>{{'Your booking' | translate}}</h3>
 
                 <hr>
-                <h5 >
-                {{'Floor' | translate}}: {{floor}} <br>
-                {{'Address' | translate}}: {{adrress}} <br>
-                {{'City' | translate}}: {{city}} <br>
-                {{'Date' | translate}}: {{date}} <br>
+                <h5>
+                    {{'Floor' | translate}}: {{floor}} <br>
+                    {{'Address' | translate}}: {{adrress}} <br>
+                    {{'City' | translate}}: {{city}} <br>
+                    {{'Date' | translate}}: {{date}} <br>
 
                 </h5>
             </div>
             <br>
-          
+
             <div class="from-group">
                 <label>{{'Seat' | translate}}:</label>
                 <div class="floors-container d-flex flex-wrap">
-                    
-                    <div class="btn btn-info" id="seat" *ngFor="let seat of seats; let i = index " 
-                    (click)="onSelectSeat(seat.seatNumber)" [class.selected]="selectedSeat === seat.seatNumber" [ngClass]="getSeatStateClass(seat)">
-                    <div>{{ seat.state | translate }}</div>
-                    
-                    <input type="radio" [value]="seat.seatNumber" [(ngModel)]="selectedSeat" id="seat-{{seat.seatNumber}}">
-                    <label for="seat-{{seat.seatNumber}}">{{'Seat' | translate}} {{seat.seatNumber}}</label>
-                    <div class="w-100" *ngIf="(i + 1) % 4 === 0"></div>
-                </div>
-                
+
+                    <div class="btn btn-info" id="seat" *ngFor="let seat of seats; let i = index "
+                        (click)="onSelectSeat(seat.seatNumber)" [class.selected]="selectedSeat === seat.seatNumber"
+                        [ngClass]="getSeatStateClass(seat)">
+                        <div>{{ seat.state | translate }}</div>
+
+                        <input type="radio" [value]="seat.seatNumber" [(ngModel)]="selectedSeat"
+                            id="seat-{{seat.seatNumber}}">
+                        <label for="seat-{{seat.seatNumber}}">{{'Seat' | translate}} {{seat.seatNumber}}</label>
+                        <div class="w-100" *ngIf="(i + 1) % 4 === 0"></div>
+                    </div>
+
                 </div>
             </div>
 
             <br><br>
-            <div class="container">
-                <a href="/home">
+
+            <div class="col">
+                <div class="d-flex">
+                  <a href="/home">
                     <button *ngIf="selectedSeat" type="button" class="btn btn-success" [disabled]="!selectedSeat"
-                        (click)="validateAndSave()">{{'Select' | translate}}</button> </a>
-                <a routerLink=".."><button type="button" class="btn btn-danger" id="cancel"
-                    >{{'Cancel' | translate}}</button></a>
-            </div>
+                      (click)="validateAndSave()">{{'Select' | translate}}</button>
+                  </a>
+                  <button routerLink=".." type="button" class="btn btn-danger" id="cancel">{{'Cancel' | translate}}</button>
+                </div>
+              </div>
+              
+
         </div>
 
-        <div class="float-child-element">
-            <h5>{{'You can see our floor plan here' | translate}}</h5>
-            <div class="yellow">
-                <img src="/assets/img/plano.png" width="400" height="400">
-            </div>
+        <div class="col-lg-4 d-flex flex-column align-items-center">
+            <h5 class="mb-4">{{'You can see our floor plan here' | translate}}</h5>
+            <img src="/assets/img/plano.png" class="imagen" width="400" height="400">
         </div>
+
     </div>
 </div>

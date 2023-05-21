@@ -29,7 +29,7 @@ export class AppComponent {
 
   
 }
-//Guardar idioma en localStorage
+
 export function getCurrentLang(): string {
   return localStorage.getItem('currentLang') || 'en-US'; 
 }
@@ -40,6 +40,7 @@ export function changeLang(lang: string): void {
   currentLang = lang;
   localStorage.setItem('currentLang', lang);
 }
+
 
 
 

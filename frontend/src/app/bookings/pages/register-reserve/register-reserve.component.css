@@ -10,7 +10,7 @@ input[type="radio"]{
   
 }
 .disabled-button {
-  background-color: gray;
+  background-color: rgb(155, 189, 132);
   pointer-events: none;
 }
 
@@ -34,6 +34,16 @@ label {
   font-weight: bold;
 }
 
+
+#planta:hover{   
+  background-color: #007bff ;
+  font-weight: bold;
+  color: white;
+
+
+}
+
+
 .btn-info{
   color: white;
   margin: 30px;
@@ -42,8 +52,7 @@ label {
 .btn-info.selected {
   background-color: #007bff;
   color: white;
-  box-shadow: none;
-  border: 3px solid #054282;
+  border-color: #054282;
 }
 
 .floors-container {

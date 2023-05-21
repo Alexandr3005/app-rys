@@ -15,19 +15,19 @@ export class BookingService {
 
   constructor(private httpClient : HttpClient) { }
 
-  // Este método nos sirve para obtener las reservas, un observable es un patrón de diseño
+  // Este método nos sirve para obtener las reservas
   obtenerListadoDeReservas():Observable<Booking[]>{
     return this.httpClient.get<Booking[]>(`${this.baseURL}`);
   }
-  // olek: método para eliminar las reservas
+  // método para eliminar las reservas
   deleteReservation(id: number): Observable<Booking> {
     return this.httpClient.delete<Booking>(`${this.baseURL}delete/${id}`);
   }
+
   // método crear reserva
   createReservation(bookingPostBody:BookingPostBody): Observable<Booking> {
-    const userId = localStorage.getItem('userId'); // obtiene el id del usuario actual almacenado en localStorage
+    const userId = localStorage.getItem('userId'); 
     return this.httpClient.post<Booking>(`${this.baseURL}reserve/`,bookingPostBody);
-    
   }
 
   updateReservationStatus(booking: Booking): Observable<Booking> {

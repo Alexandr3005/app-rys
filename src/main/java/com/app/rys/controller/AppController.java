@@ -50,23 +50,25 @@ public class AppController {
 	private BookingRepository bookingRepository;
 
 	
-	// que dependa de la fecha
+	// Crear reserva asociada a un usuario y a una fecha
+	
 	@PostMapping("/reserve/")
-	@CrossOrigin(origins = "http://localhost:4200") //sacarUsuario
-	public ResponseEntity<Booking> createReservation(@RequestBody BookingPostBody bookingPostBody, HttpServletRequest request)
-	        throws ParseException {
+	@CrossOrigin(origins = "http://localhost:4200")
+	public ResponseEntity<Booking> createReservation(@RequestBody BookingPostBody bookingPostBody,
+			HttpServletRequest request) throws ParseException {
 		Date reservationDate = DateUtility.convertStringToDate(bookingPostBody.getReservationDate());
-		String informacionDeReserva = new StringBuilder(
-				bookingPostBody.getSeatNumber() + "/" + bookingPostBody.getFloorNumber() + " "
-						+ bookingPostBody.getAddress() + ", " + bookingPostBody.getCity().toUpperCase())
-				.toString();
-
+		String informacionDeReserva = new StringBuilder(bookingPostBody.getSeatNumber() + "/" + 
+														bookingPostBody.getFloorNumber() + " "+
+														bookingPostBody.getAddress() + ", " +
+														bookingPostBody.getCity().toUpperCase()).toString();
+		
 		if (!bookingService.checkDateAvailability(reservationDate, informacionDeReserva)) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		Booking booking = bookingService.createReservation(bookingPostBody.getSeatNumber(),
-				bookingPostBody.getAddress(), bookingPostBody.getFloorNumber(), bookingPostBody.getCity().toUpperCase(),
+				bookingPostBody.getAddress(), bookingPostBody.getFloorNumber(), 
+				bookingPostBody.getCity().toUpperCase(),
 				reservationDate);
 		if (booking != null) {
 			return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
@@ -85,7 +87,8 @@ public class AppController {
 
 	@PatchMapping("/update-status/{id}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public ResponseEntity<Booking> updateReservationStatus(@PathVariable(value = "id") Long id, @RequestBody Booking booking) {
+	public ResponseEntity<Booking> updateReservationStatus(@PathVariable(value = "id") Long id,
+			@RequestBody Booking booking) {
 	    Booking updatedBooking = bookingService.updateReservationStatus(id, booking.getBookingState());
 	    if (updatedBooking != null) {
 	        return new ResponseEntity<Booking>(updatedBooking, HttpStatus.OK);

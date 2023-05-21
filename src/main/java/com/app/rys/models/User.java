@@ -39,11 +39,9 @@ public class User {
 	@Email(message = "Email not valid", regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")
 	private String email;
 
-	
-	
 	//Validacion compartida con password y password confirm
-	public static final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{8,16}$";
-	public static final String PASSWORD_PATTERN_MESSAGE = "The password must have at least 8 and 16 characters, "
+	public static final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{6,16}$";
+	public static final String PASSWORD_PATTERN_MESSAGE = "The password must have at least 6 and 16 characters, "
 	        + "at least one digit, at least one lowercase and at least one uppercase. "
 	        + "It can NOT have other symbols";
 

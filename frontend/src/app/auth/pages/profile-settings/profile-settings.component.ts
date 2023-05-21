@@ -15,6 +15,8 @@ export class ProfileSettingsComponent implements OnInit {
   settingsForm: FormGroup;
   loginError = false;
   updated = false;
+  private baseURL = "http://localhost:8080/api/reservation/";
+
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, authService: AuthService) {}
 
@@ -62,17 +64,16 @@ onSubmit() {
 
 
 
-  // Hacer una solicitud HTTP al backend para actualizar los datos del usuario
-  this.http.put(`http://localhost:8080/api/reservation/users/${this.user.id}`, this.user, {
-    headers: { 'Authorization': `Bearer ${localStorage.getItem('myToken')}` }
+  
+  this.http.put(`${this.baseURL}users/${this.user.id}`, this.user, {
   }).subscribe(
     data => {
       console.log(data);
       this.updated = true;
       
-      // Actualizar el usuario actual en localStorage o sessionStorage
+      // Actualizar el usuario actual 
       localStorage.setItem('currentUser', JSON.stringify(data));
-      //window.location.reload();
+
     },
     error => console.log(error)
   );
@@ -88,7 +89,7 @@ onSubmit() {
 
 /////////////////// //Objeto user 
 
-
+   // headers: { 'Authorization': `Bearer ${localStorage.getItem('myToken')}` }
 
 
 

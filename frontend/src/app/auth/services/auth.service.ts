@@ -30,28 +30,28 @@ export class AuthService {
 
     
     login(user: User): Observable<object> {
-      console.log(user);
       return this.httpClient.post(`${this.baseURL}login/`, user).pipe(
         map((response: any) => {
-          this.currentUser = response; //informacion del ususario
-          console.log(response);
-          // Guardar el usuario actual y el token de sesión en localStorage o sessionStorage
+          this.currentUser = response; 
+      
+          // Se guarda el usuario actual y el token
           localStorage.setItem(this.currentUserKey, JSON.stringify(this.currentUser));
           localStorage.setItem(this.tokenKey, response.token); 
-          // Retornar la respuesta del servidor
+  
           return response;
         })
       );
     }
     
+  
     isLoggedIn(): boolean {
       const token = localStorage.getItem(this.tokenKey);
       console.log(token);
 
-      // Verifico si el token existe y es válido
+      // Se verifica si el token existe y es válido
       if (token !== null && token !== undefined) {
 
-        // Verifico si el usuario actual existe y es válido
+        // Se verifica si el usuario actual existe y es válido
         const currentUserString = localStorage.getItem(this.currentUserKey) || sessionStorage.getItem(this.currentUserKey);
         const currentUser = currentUserString !== null ? JSON.parse(currentUserString) : null;
         return currentUser !== null && currentUser !== undefined;

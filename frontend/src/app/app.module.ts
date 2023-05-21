@@ -31,7 +31,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponentComponent, canActivate: [AuthLoginGuard] },
   { path: 'newReservation', component: RegisterReserveComponent, canActivate: [AuthLoginGuard] },
   { path: 'newReservation/reserve', component: ReserveComponent, canActivate: [AuthLoginGuard] },
-  { path: '', loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule) },
+  { path: '', loadChildren: () => 
+              import('./auth/auth-routing.module').then(m => m.AuthRoutingModule) },
 ];
 
 
@@ -62,7 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: getCurrentLang(),   // para mantener el idioma
+      defaultLanguage: getCurrentLang(), 
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,

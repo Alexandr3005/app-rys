@@ -39,7 +39,7 @@ export class HomeComponentComponent implements OnInit {
 
   }
 
-  //olek
+ 
   onDeleteReservation(id: number) {
     this.deleteReservation(id);
   }
@@ -61,7 +61,39 @@ export class HomeComponentComponent implements OnInit {
 
   }
 
+  private obtenerReservas() {
+    this.bookingService.obtenerListadoDeReservas().subscribe(dato => {
+      this.bookings = dato;
+      this.bookings.forEach(booking => {
+        this.monthAndYear.set(Number((String)(booking.reservationDate).split('-')[1]),
+         Number((String)(booking.reservationDate).split('-')[0]));
+      });
+    });
+  }
+
+  updateReservationState(booking: Booking, newState: string): void {
+    booking.bookingState = this.translateService.instant(newState);
   
+    this.bookingService.updateReservationStatus(booking)
+      .subscribe((updatedBooking: Booking) => {
+        console.log('Estado de reserva actualizado:', updatedBooking);
+      });
+  }
+
+  updateReservationStateCancel(booking: Booking): void {
+    this.updateReservationState(booking, 'Cancelled');
+  }
+  
+  updateReservationStateConfirm(booking: Booking): void {
+    this.updateReservationState(booking, 'Confirmed');
+  }
+
+
+
+
+
+
+  /*
   updateReservationStateCancel(booking: Booking): void {
     booking.bookingState = this.translateService.instant('Cancelled');
 
@@ -80,16 +112,8 @@ export class HomeComponentComponent implements OnInit {
         });
   }
 
-
-  private obtenerReservas() {
-    this.bookingService.obtenerListadoDeReservas().subscribe(dato => {
-      this.bookings = dato;
-      this.bookings.forEach(booking => {
-        this.monthAndYear.set(Number((String)(booking.reservationDate).split('-')[1]), Number((String)(booking.reservationDate).split('-')[0]));
-      });
-    });
-  }
-
+*/
+ 
 
 
   // objetivo : para poner clas reserva de bajo de su fecha(mes y año) correspondiente en el template

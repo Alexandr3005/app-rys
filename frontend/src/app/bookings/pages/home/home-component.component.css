@@ -1,10 +1,23 @@
 /*olek*/
+
+
+
+
 .col-3{
-    background-color: whitesmoke;
+ 
     border-style: solid;
     height: 100px ;
+    width: 300px;
+    background-color: #cfebef;
+    font-size: 16px;
+    font-size: 16px;
+    color: #000000;
+    font-weight: 500;
+    
    
 }
+
+
 
 /*Añadir cajas*/
 .reservation-box {

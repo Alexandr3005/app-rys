@@ -8,11 +8,12 @@ import com.app.rys.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
-
 	User findByEmail(String email);
 	User findByid(Long id);
-	//User findByFullName(String fullname);
-	
+	User findByFullName(String fullname);
+	User findByPassword(String password);
 
 
 }
+
+

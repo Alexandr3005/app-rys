@@ -12,55 +12,38 @@
 <app-menu></app-menu>
 
 
-<div class="container">
+<div class="container ">
 
-
-    <div class="float-parent-element">
-
-
-    </div>
     <br>
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>{{ 'My reservations' | translate }}</h3>
+        <button routerLink="/newReservation" type="button" class="btn btn-primary">{{ 'Nueva reserva' | translate }}</button>
+      </div>
 
-    <div class="row container" style="display: inline-block;">
-        <h3> {{'My reservations' |
-            translate}}
-        </h3>
-    </div>
+
     <hr>
 
     <div>
 
     </div>
+    <div class="container">
+        <br>
+        <div class="imagen">
+            <img class="rounded img-fluid" style="width: 100%; height: 300px;" src="/assets/img/prueba2.jpg">
+        </div>
+        <br>
+    </div>
+   
+
 
     <h6 *ngIf="bookings">{{'You have ' + bookings.length + ' confirmed reservations this month' |
         translate}}</h6>
 
-    <div class="d-flex justify-content-end">
-        <div class="red">
+    <div class="row" id="prueba" >
 
+        <ng-container *ngFor="let booking of bookings" >
 
-            <button routerLink="/newReservation" type="button" class="btn btn-primary">{{'New reservation' |
-                translate}}</button>
-
-        </div>
-
-        <div class="">
-            <br><br>
-            <div class="imagen">
-                <img class="rounded" src="/assets/img/home.png" width="350" height="250">
-            </div>
-
-        </div>
-
-
-    </div>
-
-    <div class="row container"> <!--Recorrido de las reservas-->
-
-
-        <ng-container *ngFor="let booking of bookings" class="col-5">
-
-            <div class="col-3 rounded reservation-box"
+            <div class="col-3 rounded reservation-box "
                 *ngIf="currentUser.id === 1 || booking.userId === currentUser.id">
 
                 <div class="nav-item dropdown position-relative">
@@ -70,8 +53,6 @@
                         <img src="/assets/img/mas.png" width="18" height="18">
                     </a>
 
-
-                    <!--Alert olek-->
                     <a class="nav-link position-absolute top-0 end-0" (click)="openModal(booking.id)" href=""
                         data-bs-toggle="modal" data-bs-target="#modal">
                         <img src="/assets/img/delete2.ico" width="18" height="18">
@@ -108,8 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <!--Alert olek-->
-                <!-- Modal modificar -->
+
                 <div class="modal fade" id="Mt-{{booking.id}}">
                     <div class="modal-dialog">
                         <div class="modal-content ">
@@ -133,13 +113,13 @@
                 </div>
                 <div *ngIf="currentUser.id === 1">User ID: {{booking.userId}}</div>
 
-                <div>{{booking.reservationDate | date: 'd MMMM' }}, {{booking.reservationDate | date: 'yyyy'}}</div>
+                <div class="reservation-date">{{booking.reservationDate | date: 'd MMMM' }}, {{booking.reservationDate | date: 'yyyy'}}</div>
 
-                <div>{{booking.informacionDeReserva.split(' ')[4]}}</div>
+                <div class="reservation-info">{{booking.informacionDeReserva.split(' ')[4]}}</div>
+        
+                <div class="reservation-status">{{ 'Reservation status:' | translate }} {{ booking.bookingState | translate }}</div>
+        
 
-
-
-                <div>{{ 'Reservation status:' | translate }} {{ booking.bookingState | translate }}</div>
                 <br><br>
                 <div class="row">
                     <div class="col d-flex">
@@ -151,7 +131,16 @@
                 </div>
 
             </div>
+
+
         </ng-container>
     </div>
+
+
+   
+
+   
+
+ 
 
 </div>
