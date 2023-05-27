@@ -40,7 +40,7 @@
     "Passwords must match":"Passwords must match",
     "Phone": "Phone",
     "Enter a correct number phone": "Enter a correct number phone",
-    "Name":"Name",
+    "Full name":"Full name",
     "This email is already registered":"This email is already registered",
     "Confirm password":"Confirm Password",
     
@@ -54,11 +54,11 @@
     "Reservation status": "Reservation status",
 
     "Available":"Available",
-    "Not available":"Not available"
-    
-
-   
-  
+    "Not available":"Not available",
+    "You have {0} reservations": "You have {0} reservations",
+    "Edit profile": "Edit profile",
+    "Your profile has been updated": "Your profile has been updated"
+ 
    
 
   }

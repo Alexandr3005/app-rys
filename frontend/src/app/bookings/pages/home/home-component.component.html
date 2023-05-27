@@ -1,13 +1,4 @@
-<!--<div style="">
-<div class="container" style="display: inline;">
-    <h6>You have 0 confirmed reservations this month</h6>
-    <a routerLink="/newReservation"><button type="button" class="btn btn-primary">New reservation</button></a>
-</div>
 
-<div>
-    <img src="/assets/img/reservePC.jpg" width="200" height="200">
-</div>
-</div>-->
 
 <app-menu></app-menu>
 
@@ -17,7 +8,7 @@
     <br>
     <div class="d-flex justify-content-between align-items-center">
         <h3>{{ 'My reservations' | translate }}</h3>
-        <button routerLink="/newReservation" type="button" class="btn btn-primary">{{ 'Nueva reserva' | translate }}</button>
+        <button routerLink="/newReservation" type="button" class="btn btn-primary">{{ 'New reservation' | translate }}</button>
       </div>
 
 
@@ -35,10 +26,10 @@
     </div>
    
 
-
-    <h6 *ngIf="bookings">{{'You have ' + bookings.length + ' confirmed reservations this month' |
+    <!--
+    <h6 *ngIf="bookings">{{'You have ' + bookings.length + ' reservations' |
         translate}}</h6>
-
+    -->
     <div class="row" id="prueba" >
 
         <ng-container *ngFor="let booking of bookings" >
@@ -47,6 +38,7 @@
                 *ngIf="currentUser.id === 1 || booking.userId === currentUser.id">
 
                 <div class="nav-item dropdown position-relative">
+
 
                     <a class="nav-link position-absolute top-0 end-0" data-bs-toggle="modal"
                         [attr.data-bs-target]="'#Mt-' + booking.id" style="margin-right: 25px;">
@@ -128,7 +120,10 @@
                         <button *ngIf="currentUser.id === 1" (click)="updateReservationStateConfirm(booking)"
                             class="btn btn-primary ms-2">{{'Confirm' | translate}}</button>
                     </div>
+                 
                 </div>
+
+                <br><br>    
 
             </div>
 

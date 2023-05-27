@@ -42,8 +42,8 @@
     "The password must have a minimum of 6 characters":"La contraseña debe tener al menos 6 caracteres",
     "Passwords must match":"Las contraseñas no coinciden",
     "Phone": "Telefono",
-    "Enter a correct number phone": "Introduce el numbero correcto",
-    "Name":"Nombre",
+    "Enter a correct number phone": "Introduce el numero correcto",
+    "Full name":"Nombre completo",
     "This email is already registered": "Este correo electrónico ya está registrado",
     "Confirm password": "Confirmar contraseña",
     "Hello": "Hola",
@@ -55,10 +55,11 @@
 
     "Reservation status:": "Estado de la reserva:",
     "Available":"Disponible",
-    "Not available":"No disponible"
-   
+    "Not available":"No disponible",
+    "Reservation detail": "Detalle de reserva",
 
-
-    
+    "You have {0} reservations": "Tienes {0} reservas",
+    "Edit profile": "Editar perfil",
+    "Your profile has been updated": "Tu perfil ha sido actualizado"
 
   }

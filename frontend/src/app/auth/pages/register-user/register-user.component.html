@@ -11,7 +11,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="d-flex justify-content-center" >
       <div>
         <div class="form-group" >
-          <h3> {{'Login' | translate}} </h3>
+          <h3> {{'Sign up' | translate}} </h3>
 
           <br>
           <label for="exampleInputEmail1">{{'Email address' | translate}}</label>
@@ -24,7 +24,7 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="fullName">{{'Name' | translate}}</label>
+          <label for="fullName">{{'Full name' | translate}}</label>
           <input type="fullName" class="form-control" formControlName="fullName" id="fullname" name="fullname" 
           [ngClass]="{'error': invalidField('fullName') }"
           >
@@ -34,7 +34,7 @@
         <br>
         <div class="form-group">
           <label for="password">{{'Password' | translate}}</label>
-          <input type="password" class="form-control  " formControlName="password" id="password" name="password" placeholder="Password"
+          <input type="password" class="form-control  " formControlName="password" id="password" name="password"
           [ngClass]="{'error': invalidField('password')}">
           <span *ngIf="invalidField('password')"> {{'The password must have a minimum of 6 characters' | translate}}</span>
         </div>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
           <label for="confirmPassword">{{'Confirm Password' | translate}}</label>
-          <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
+          <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" 
           [ngClass]="{'error': isConfirmPasswordInvalid()}"
           >
           <span *ngIf="registerForm.hasError('notSame') && this.registerForm.controls['confirmPassword'].touched ">{{'Passwords must match' | translate}}</span>
@@ -58,7 +58,7 @@
           <span *ngIf="invalidField('phone')"> {{'Enter a correct number phone' | translate}}</span>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">{{'Login' | translate}}</button>
+        <button type="submit" class="btn btn-primary">{{'Sign up' | translate}}</button>
       </div>
     </form>
   </div>

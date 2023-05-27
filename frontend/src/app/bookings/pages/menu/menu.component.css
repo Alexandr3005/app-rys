@@ -22,7 +22,7 @@
   }
   
   .language-picker {
-    width: 80px;
+    width: 100px;
     height: 32px;
     font-size: small;
     border-style: none;
@@ -59,8 +59,4 @@
   }
   */
 
-  .navbar-nav{
-    display: flex;
-    justify-content: center; /* centers the content horizontally */
-  }
-  
+ 

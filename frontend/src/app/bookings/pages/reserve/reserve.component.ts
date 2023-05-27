@@ -51,7 +51,7 @@ export class ReserveComponent implements OnInit {
       console.log(data);
     });
   }
-///MIRAR ESTO
+
   validateAndSave(){
     if(this.selectedSeat){
       this.Selected = true;
@@ -68,7 +68,7 @@ export class ReserveComponent implements OnInit {
 
   getSeatStateClass(seats: Seat) {
     if (seats.state === 'Not available') {
-      return 'btn btn-info disabled';
+      return 'btn btn-danger disabled';
     } else if (seats.state === 'Not available') {
       return 'btn btn-info';
     } else {

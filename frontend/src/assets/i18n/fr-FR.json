@@ -42,7 +42,7 @@
     "Passwords must match":"Les mots de passe doivent correspondre",
     "Phone": "Téléphone",
     "Enter a correct number phone": "Entrez un numéro de téléphone correct",
-    "Name":"Nom",
+    "Name":"Nom et prénom ",
     "This email is already registered": "Cet e-mail est déjà enregistré",
     "Confirm password": "Confirmez le mot de passe",
     "Hello": "Salut",
@@ -54,11 +54,11 @@
     "Reservation status": "État de la réservation",
 
     "Available":"Disponible",
-    "Not available":"Non disponible"
+    "Not available":"Non disponible",
 
+    "Edit profile": "Editar perfil",
 
-
-
+    "Your profile has been updated": "votre profil a été mis a jour"
   
 
   }
