@@ -18,19 +18,13 @@ import com.app.rys.repository.BuildingRepository;
 import com.app.rys.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.config", "com.app.rys"})
 
 
 public class RysApplication {
 	
-	@SpringBootApplication
-	@ComponentScan(basePackages = "com.example")
-	public class YourApplication {
 
-	    public static void main(String[] args) {
-	        SpringApplication.run(YourApplication.class, args);
-	    }
-	}
+	
 	@Autowired
 	private UserRepository userRepository;
 	
