@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-settings',
@@ -18,7 +19,8 @@ export class ProfileSettingsComponent implements OnInit {
   private baseURL = "http://localhost:8080/api/reservation/";
 
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, authService: AuthService) {}
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, 
+    authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     const currentUserString = localStorage.getItem('currentUser');
@@ -79,6 +81,11 @@ onSubmit() {
   );
 }
 
+refreshPage(): void {
+  this.router.navigateByUrl('/home').then(() => {
+    window.location.reload();
+  });
+}
 }
 
 
