@@ -1,0 +1,9 @@
+language: java
+jdk:
+  - openjdk11
+
+before_install:
+  - chmod +x mvnw  # Otorga permisos de ejecución al wrapper de Maven
+
+script:
+  - ./mvnw clean install
