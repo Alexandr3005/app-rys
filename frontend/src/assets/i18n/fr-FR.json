@@ -10,7 +10,6 @@
     "Logout": "Déconnexion",
     "Profile settings": "Paramètres de profil",
     "Back to Home": "Retourner à Home",
-
     "My reservations": "Mes réservations",
     "You have 0 confirmed reservations this month":"Vous avez 0 réservations confirmées ce mois-ci",
     "New reservation": "Nouvelle réservation",
@@ -20,23 +19,19 @@
     "Floor":"Plante",
     "Building":"Bâtiment",
     "City":"Ville",
-
     "Create new reservation":"Créer une nouvelle réservation",
     "Date":"Date",
     "Select":"Sélectionner",
     "Cancel":"Annuler",
-
     "Your booking": "Votre réservation",
     "Address":"Adresse",
     "You can see our floor plan here":"Vous pouvez voir notre plan d'étage ici",
-
     "User not found or wrong credentials":"Utilisateur introuvable ou informations d'identification erronées",
     "Email address":"Adresse e-mail",
     "Password":"Mot de passe",
     "Enter a valid email":"Entrez le bon e-mail",
     "Enter a valid password":"Entrer le bon mot de passe",
     "Sign up":"S'inscrire",
-
     "Enter your name and surname":"Entrez votre nom et prénom valides",
     "The password must have a minimum of 6 characters":"Le mot de passe doit contenir au moins 6 caractères",
     "Passwords must match":"Les mots de passe doivent correspondre",
@@ -52,13 +47,14 @@
     "Cancelled":"Annulé",
     "Confirmed":"Confirmé",
     "Reservation status": "État de la réservation",
-
     "Available":"Disponible",
     "Not available":"Non disponible",
-
     "Edit profile": "Editar perfil",
+    "Your profile has been updated": "Votre profil a été mis a jour",
+    "You have reached the maximum number of reservations":"Vous avez atteint le nombre maximum de réservations",
+    "Number of reservations per user":"Nombre de réservations par utilisateur",
+    "Update":"Mise à jour",
+    "The number of reservations allowed has been updated":"Le nombre de réservations autorisées a été mis à jour" 
 
-    "Your profile has been updated": "votre profil a été mis a jour"
-  
 
   }

@@ -1,15 +1,24 @@
-
-
 <app-menu></app-menu>
-
 
 <div class="container ">
 
     <br>
-    <div class="d-flex justify-content-between align-items-center">
-        <h3>{{ 'My reservations' | translate }}</h3>
-        <button routerLink="/newReservation" type="button" class="btn btn-primary">{{ 'New reservation' | translate }}</button>
-      </div>
+
+    <h3>{{ 'My reservations' | translate }}</h3>
+
+    <div class="d-flex justify-content-end">
+        <button routerLink="/newReservation" type="button" class="btn btn-primary"
+            [disabled]="(userReservationsCount[currentUser.id] >= selectedMaxBookings) && (currentUser.id !== 1)">
+            {{ 'New reservation' | translate }}
+        </button>
+    </div>
+
+
+
+    <span class="d-flex justify-content-end"
+        *ngIf="(userReservationsCount[currentUser.id] >= selectedMaxBookings) && (bookings.length > 0 || selectedMaxBookings > 0) && (currentUser.id !== 1)">
+        {{'You have reached the maximum number of reservations' | translate}}
+    </span>
 
 
     <hr>
@@ -24,21 +33,29 @@
         </div>
         <br>
     </div>
-   
 
-    <!--
-    <h6 *ngIf="bookings">{{'You have ' + bookings.length + ' reservations' |
-        translate}}</h6>
-    -->
-    <div class="row" id="prueba" >
+    <!-- Selección de numero de reservas -->
 
-        <ng-container *ngFor="let booking of bookings" >
+    <form *ngIf="currentUser.id == 1" (ngSubmit)="nBookingsUpdate()">
+        <h5>{{ 'Number of reservations per user' | translate }}</h5>
+        <div class="d-flex align-items-center">
+            <div class="col-1">
+                <select class="form-select me-2" [(ngModel)]="selectedMaxBookings" name="maxBookings">
+                    <option *ngFor="let option of [1, 2, 3, 4]">{{ option }}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary ms-3">{{ 'Update' | translate }}</button>
+        </div>
+        <span *ngIf="avisoNumeroReservas"> {{'The number of reservations allowed has been updated' | translate}} </span>
+    </form>
 
-            <div class="col-3 rounded reservation-box "
+    <div class="row" id="prueba">
+
+        <ng-container *ngFor="let booking of bookings">
+            <div class="col-3 rounded reservation-box"
                 *ngIf="currentUser.id === 1 || booking.userId === currentUser.id">
 
                 <div class="nav-item dropdown position-relative">
-
 
                     <a class="nav-link position-absolute top-0 end-0" data-bs-toggle="modal"
                         [attr.data-bs-target]="'#Mt-' + booking.id" style="margin-right: 25px;">
@@ -105,12 +122,14 @@
                 </div>
                 <div *ngIf="currentUser.id === 1">User ID: {{booking.userId}}</div>
 
-                <div class="reservation-date">{{booking.reservationDate | date: 'd MMMM' }}, {{booking.reservationDate | date: 'yyyy'}}</div>
+                <div class="reservation-date">{{booking.reservationDate | date: 'd MMMM' }}, {{booking.reservationDate |
+                    date: 'yyyy'}}</div>
 
                 <div class="reservation-info">{{booking.informacionDeReserva.split(' ')[4]}}</div>
-        
-                <div class="reservation-status">{{ 'Reservation status:' | translate }} {{ booking.bookingState | translate }}</div>
-        
+
+                <div class="reservation-status">{{ 'Reservation status:' | translate }} {{ booking.bookingState |
+                    translate }}</div>
+
 
                 <br><br>
                 <div class="row">
@@ -120,10 +139,10 @@
                         <button *ngIf="currentUser.id === 1" (click)="updateReservationStateConfirm(booking)"
                             class="btn btn-primary ms-2">{{'Confirm' | translate}}</button>
                     </div>
-                 
+
                 </div>
 
-                <br><br>    
+                <br><br>
 
             </div>
 
@@ -132,10 +151,10 @@
     </div>
 
 
-   
 
-   
 
- 
+
+
+
 
 </div>

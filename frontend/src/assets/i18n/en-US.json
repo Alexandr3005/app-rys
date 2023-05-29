@@ -4,13 +4,11 @@
     "language.english": "English",
     "language.french": "French",
     "language.spanish": "Spanish",
-    "title": "Awesome super APP!",
     "My profile": "My profile",
     "Login": "Login",
     "Logout": "Logout",
     "Profile settings": "Profile settings",
     "Back to Home": "Back to Home",
-
     "My reservations": "My reservations",
     "You have 0 confirmed reservations this month": "You have 0 confirmed reservations this month",
     "New reservation": "New reservations",
@@ -24,17 +22,14 @@
     "Date":"Date",
     "Select":"Select",
     "Cancel":"Cancel",
-
     "Your booking": "Your booking",
     "Address":"Address",
     "You can see our floor plan here":"You can see our floor plan here",
-
     "User not found or wrong credentials":  "User not found or wrong credentials",
     "Email address":"Email address",
     "Password":"Password",
     "Enter a valid email":"Enter a valid email",
     "Enter a valid password":"Enter a valid password",
-    
     "Enter your name and surname":"Enter a valid name and surname",
     "The password must have a minimum of 6 characters":"The password must have a minimum of 6 characters",
     "Passwords must match":"Passwords must match",
@@ -43,7 +38,6 @@
     "Full name":"Full name",
     "This email is already registered":"This email is already registered",
     "Confirm password":"Confirm Password",
-    
     "Sign up":"Sign up",
     "Hello": "Hello",
     "Return":"Return",
@@ -52,13 +46,14 @@
     "Pending":"Pending",
     "Cancelled":"Cancelled",
     "Reservation status": "Reservation status",
-
     "Available":"Available",
     "Not available":"Not available",
     "You have {0} reservations": "You have {0} reservations",
     "Edit profile": "Edit profile",
-    "Your profile has been updated": "Your profile has been updated"
- 
-   
+    "Your profile has been updated": "Your profile has been updated",
+    "You have reached the maximum number of reservations":"You have reached the maximum number of reservations",
+    "Number of reservations per user":"Number of reservations per user",
+    "Update":"Update",
+    "The number of reservations allowed has been updated":"The number of reservations allowed has been updated"
 
   }
