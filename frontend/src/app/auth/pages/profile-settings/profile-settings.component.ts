@@ -81,6 +81,7 @@ onSubmit() {
   );
 }
 
+//Conexion travis
 refreshPage(): void {
   this.router.navigateByUrl('/home').then(() => {
     window.location.reload();
