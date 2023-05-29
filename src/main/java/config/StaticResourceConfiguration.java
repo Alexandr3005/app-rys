@@ -27,10 +27,6 @@ public class StaticResourceConfiguration implements WebMvcConfigurer {
             return "forward:/index.html";
         }
     }
-
-    
-    
-    
     
     
 }
