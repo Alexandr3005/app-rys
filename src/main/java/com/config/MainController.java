@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class MainController {
 
-    @RequestMapping(value = {"/", "/{path:[^\\.]*}"})
-    public String forward(@PathVariable(required = false) String path) {
-        return "forward:/index.html";
-    }
+	@RequestMapping(value = {"/", "/{path:[^\\.]*}", "/error"})
+	public String forward(@PathVariable(required = false) String path) {
+	    return "forward:/index.html";
+	}
 }

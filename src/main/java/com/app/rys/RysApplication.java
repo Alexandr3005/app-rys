@@ -376,7 +376,7 @@ public class RysApplication {
 		building3.setCity("barcelona");
 		building3.setFloors(Arrays.asList(floor5,floor6));
 		
-		building4.setAdrress("Calle Francia 41");
+		building4.setAdrress("Calle Tallers 4");
 		building4.setCity("barcelona");
 		building4.setFloors(Arrays.asList(floor7,floor8));
 		
